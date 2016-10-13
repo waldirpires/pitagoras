@@ -1,0 +1,699 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta property="fb:app_id" content="439151350312" />
+		<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1" />
+		<title>C Programming - File management in C</title>
+				<meta name="keywords" content="c, programming, -, file, management, in, c,c-language" />
+						<meta name="description" content="C Programming File management in C In this tutorial you will learn about C Programming File management in C File operation functions in C Defining and opening a file Closing a file The getw and putw functions The fprintf fscanf functions Rand" />
+				<meta name="verify-v1"   content="7fjmHi7MMlbeWOyLP6yFbK74qL+mpP6ezGMG3h8jBpo=" />
+		<link href="https://plus.google.com/103983743727541634391/" rel="publisher" />
+		<meta name="google-site-verification" content="hhsng1n_fyvMd6X6l8GmSMePNbT3V5HpW9R3HTzjedg" />
+		<link rel="stylesheet" href="/template/exforsys_blue/style.css" type="text/css" media="screen" />
+		<!--[if IE 6]><link rel="stylesheet" href="style.ie6.css" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="style.ie7.css" type="text/css" media="screen" /><![endif]-->
+
+<meta name="robots" content="index, follow" />
+	<link rel="canonical" href="http://www.exforsys.com/tutorials/c-language/file-management-in-c.html" />						
+
+ 
+<script type='text/javascript'>
+(function() {
+var useSSL = 'https:' == document.location.protocol;
+var src = (useSSL ? 'https:' : 'http:') +
+'//www.googletagservices.com/tag/js/gpt.js';
+document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+})();
+</script>
+
+<script type='text/javascript'>
+googletag.defineSlot('/1019449/EFS_Center_Bottom_300', [301, 251], 'div-gpt-ad-1345125070791-1').addService(googletag.pubads());
+googletag.defineSlot('/1019449/EFS_Center_Top_300', [300, 251], 'div-gpt-ad-1345125070791-3').addService(googletag.pubads());
+googletag.defineSlot('/1019449/EFS_Header', [728, 91], 'div-gpt-ad-1345125070791-6').addService(googletag.pubads());
+googletag.defineSlot('/1019449/EFS_Misc_Footer', [1, 2], 'div-gpt-ad-1345125070791-8').addService(googletag.pubads());
+googletag.defineSlot('/1019449/EFS_RIGHT_300_600', [300, 600], 'div-gpt-ad-1345125070791-9').addService(googletag.pubads());
+googletag.pubads().enableSyncRendering();
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+</script>
+
+
+<link href="https://plus.google.com/103983743727541634391" rel="publisher" /><script type="text/javascript">
+(function() 
+{var po = document.createElement("script");
+po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(po, s);
+})();</script>
+
+	
+	
+	</head>
+	<body>
+		<a name="efstop"></a>
+		<div id="art-main">
+			<div class="cleared reset-box"></div>
+			<div class="art-sheet">
+				<div class="art-sheet-tl"></div>
+				<div class="art-sheet-tr"></div>
+				<div class="art-sheet-bl"></div>
+				<div class="art-sheet-br"></div>
+				<div class="art-sheet-tc"></div>
+				<div class="art-sheet-bc"></div>
+				<div class="art-sheet-cl"></div>
+				<div class="art-sheet-cr"></div>
+				<div class="art-sheet-cc"></div>
+				<div class="art-sheet-body">
+					<div class="art-nav">
+						<div class="art-nav-l"></div>
+						<div class="art-nav-r"></div>
+						<div class="art-nav-outer">
+							<ul class="art-hmenu">
+								<li><a href="/"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li>
+								<li class="art-hmenu-li-separator"><span class="art-hmenu-separator"> </span></li>
+								<li><a href="/tutorials.html"><span class="l"></span><span class="r"></span><span class="t">Technical Training</span></a></li>
+								<li class="art-hmenu-li-separator"><span class="art-hmenu-separator"> </span></li>
+								<li><a href="/career-center.html"><span class="l"></span><span class="r"></span><span class="t">Career Training</span></a></li>
+								<li class="art-hmenu-li-separator"><span class="art-hmenu-separator"> </span></li>
+								<li><a href="/reviews.html"><span class="l"></span><span class="r"></span><span class="t">Book Reviews</span></a></li>
+								<li class="art-hmenu-li-separator"><span class="art-hmenu-separator"> </span></li>
+								<li><a href="/iq/"><span class="l"></span><span class="r"></span><span class="t">Skill Test</span></a></li>
+								<li class="art-hmenu-li-separator"><span class="art-hmenu-separator"> </span></li>
+								<li><a href="/forum/"><span class="l"></span><span class="r"></span><span class="t">Forums</span></a></li>
+								<li><a target="_blank" href="http://feeds.feedburner.com/Exforsyscom">
+								<span class="l"></span><span class="r"></span><span class="t"><img align="left" alt='Subscribe to Exforsys Free Training via RSS' src="http://feeds.feedburner.com/~fc/Exforsyscom?bg=99CCFF&#38;fg=444444&#38;anim=0" height="26" width="88" style="margin-top:2px; border:0;" /></span></a></li>
+							</ul>
+							<div style="float:right; z-index:9999; width:325px; margin:5px 0 0 0; text-align:right;">							
+							
+	<a style="text-decoration:none;" href="http://www.exforsys.com/vblogin.php?redirect=http://www.exforsys.com/tutorials/c-language/file-management-in-c.html"><span style="color:#fff;">Login</span></a>
+	&nbsp;&nbsp;<span style="color:#fff;">|</span>&nbsp;&nbsp;
+	<a style="text-decoration:none;" href="/forum/register.php"><span style="color:#fff;">Signup</span>&nbsp;&nbsp;</a>
+								
+							</div>
+						</div>
+					</div>
+					<div class="cleared reset-box"></div>
+					<div class="art-header">
+						<div style"width:313px; float:left;">
+							<a href="/" title="Exforsys" style="overflow:auto; height:67px;"><img style="margin:15px 0 0 0;" src="/template/exforsys_blue/images/header-object.png" alt="Exforsys" width="332" height="67" border="0" /></a>
+						</div>
+						
+<div style='float:right; margin:-70px 0px 0 -10px;'>
+<!-- EFS_Header -->
+<div id='div-gpt-ad-1345125070791-6' style='width:728px; height:91px;'>
+<script type='text/javascript'>
+googletag.display('div-gpt-ad-1345125070791-6');
+</script>
+</div>
+</div>
+
+											</div>
+					<div class="cleared reset-box"></div>
+					<div id='mcontainer'  style='background-color:#90B5DA; color:black; height:30px;'>
+
+
+
+
+						<div style='width:383px; float: right; margin:1px 0 0 0; padding: 0;'>	         				<form action='http://search.exforsys.com/'>
+			  				<div>
+			    				<input type='text' name='q' size='31' />
+			    				<input type='submit' name='sa' value='Search' />
+			  				</div>
+							</form>
+						</div>	
+					</div>
+					<div class="cleared reset-box"></div>
+					<div class="art-content-layout">
+						<div class="art-content-layout-row">
+<div style="width:808px; float:left;"> 		
+<div style="width: 75px; margin: 135px 0 0 -79px; display: block; position: fixed; top: 60px; text-align:center; background-color:#fff; border-width:1px; border-style:solid; border-color:#c3c3c3;">
+    <div style="margin:7px 0 15px 0; clear:both; text-align:center;">
+		<span class='st_plusone_vcount' displayText='Google +1'></span>
+    </div>
+    <div style="margin:0px 0 15px 0; clear:both; text-align:center;">
+        <span class='st_facebook_vcount' displayText='Facebook'></span>
+    </div>
+    <div style="margin:0px 0 15px 0; clear:both; text-align:center;">
+        <span class='st_twitter_vcount' displayText='Tweet'></span>
+    </div>
+    <div style="margin:0 0 15px 0; clear:both; text-align:center;">
+        <span class='st_linkedin_vcount' displayText='LinkedIn'></span>
+    </div>
+    <div style="margin:0 0 15px 0; clear:both; text-align:center;">
+        <span class='st_email_vcount' displayText='Email'></span>    
+    </div>
+<!--    <div style="margin:0 0 15px 0; clear:both; text-align:center;">
+        <span class='st_sharethis_vcount' displayText='ShareThis'></span>
+</div>-->
+</div>
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "5800b501-fa86-4e31-9693-142221c9f4a1"}); </script>
+
+<div class="art-layout-cell art-content">
+	<div class="art-post">
+		<div class="art-post-body">
+			<div class="art-post-inner art-article">
+				<h2 class="art-postheader"></h2>
+				<div class="cleared"></div>
+				<div class="art-postcontent">
+
+
+					<a class='pathway' href='http://www.exforsys.com/'><b>Home</b></a> <img alt="arrow" class="bcarrow" src="http://www.exforsys.com/images/arrow.png" /> <a class='pathway' href='http://www.exforsys.com/tutorials.html'><b>Technical Training</b></a> <img alt="arrow" class="bcarrow" src="http://www.exforsys.com/images/arrow.png" /> <a class='pathway' href='http://www.exforsys.com/tutorials/c-language.html'><b>C Tutorials</b></a><br><br><style>
+ol li {padding:0 0 0 15px; list-style:decimal; margin:0 0 0 45px;}
+</style><a id='art_start'></a><div style='clear: both; padding-bottom:7px;'></div><h1 style='font-size:20px; text-align:left; line-height:140%; margin: 0px 0 10px 0; padding:0;'>C Programming - File management in C</h1><div class="pubdate">Author: Ramesh B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Published on: 31st May 2006 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Last Updated on: 4th Mar 2011</div><div class='artcontent'><h3><font color="#0000ff">C Programming - File management in C</font></h3>
+<p>In this tutorial you will learn about C Programming - File management in C,<font color="#000000"> File operation functions in C, Defining and opening a file, Closing a file, The getw and putw functions, The fprintf &amp; fscanf functions, Random access to files and fseek function.</font></p>
+<p>C supports a number of functions that have the ability to perform basic file operations, which include: <br/>
+1. Naming a file <br/>
+2. Opening a file <br/>
+3. Reading from a file <br/>
+4. Writing data into a file <br/>
+5. Closing a file </p>
+<ul>
+    <li>Real life situations involve large volume of data and in such cases, the console oriented I/O operations pose two major problems </li>
+    <li>It becomes cumbersome and time consuming to handle large volumes of data through terminals. </li>
+    <li>The entire data is lost when either the program is terminated or computer is turned off therefore it is necessary to have more flexible approach where data can be stored on the disks and read whenever necessary, without destroying the data. This method employs the concept of files to store data. </li>
+</ul>
+<h4><font color="#0000ff">File operation functions in C: </font></h4>
+<table class="MsoNormalTable" style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; BORDER-COLLAPSE: collapse; mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0in 5.4pt 0in 5.4pt; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext" cellspacing="0" cellpadding="0" border="1">
+    <tbody>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><b style="mso-bidi-font-weight: normal"><font face="Arial" color="#800000" size="2"><span style="FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: maroon; FONT-FAMILY: Arial; mso-bidi-font-weight: normal">Function Name</span></font></b></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: windowtext 1pt solid; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><b style="mso-bidi-font-weight: normal"><font face="Arial" color="#800000" size="2"><span style="FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: maroon; FONT-FAMILY: Arial; mso-bidi-font-weight: normal">Operation</span></font></b></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">fopen()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Creates a new file for use<br/>
+            </span></font><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Opens a new existing file for use</span></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">fclose</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Closes a file which has been opened for use</span></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">getc()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Reads a character from a file</span></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">putc()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Writes a character to a file</span></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">fprintf()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Writes a set of data values to a file</span></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">fscanf()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Reads a set of data values from a file</span></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">getw()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Reads a integer from a file</span></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">putw()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Writes an integer to the file</span></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">fseek()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Sets the position to a desired point in the file</span></font></p>
+            </td>
+        </tr>
+        <tr>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">ftell()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Gives the current position in the file</span></font></p>
+            </td>
+        </tr>
+        <tr style="mso-yfti-lastrow: yes">
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: windowtext 1pt solid; WIDTH: 1.2in; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="115">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">rewind()</span></font></p>
+            </td>
+            <td style="BORDER-RIGHT: windowtext 1pt solid; PADDING-RIGHT: 5.4pt; BORDER-TOP: #ece9d8; PADDING-LEFT: 5.4pt; PADDING-BOTTOM: 0in; BORDER-LEFT: #ece9d8; WIDTH: 221.4pt; PADDING-TOP: 0in; BORDER-BOTTOM: windowtext 1pt solid; BACKGROUND-COLOR: transparent; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt" valign="top" width="295">
+            <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><font face="Arial" size="2"><span style="FONT-SIZE: 10pt; FONT-FAMILY: Arial">Sets the position to the begining of the file</span></font></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h4><font color="#0000ff">Defining and opening a file: </font></h4>
+<p>If we want to store data in a file into the secondary memory, we must specify certain things about the file to the operating system. They include the fielname, data structure, purpose. </p>
+<p>The general format of the function used for opening a file is </p>
+<p><font face="Courier New" color="#800000">FILE *fp; <br/>
+fp=fopen(&ldquo;filename&rdquo;,&rdquo;mode&rdquo;); <br/>
+</font><br/>
+The first statement declares the variable fp as a pointer to the data type FILE. As stated earlier, File is a structure that is defined in the I/O Library. The second statement opens the file named filename and assigns an identifier to the FILE type pointer fp. This pointer, which contains all the information about the file, is subsequently used as a communication link between the system and the program. <br/>
+The second statement also specifies the purpose of opening the file. The mode does this job. <br/>
+<br/>
+R open the file for read only. <br/>
+W open the file for writing only. <br/>
+A open the file for appending data to it. <br/>
+<br/>
+Consider the following statements: </p>
+<p><font face="Courier New" color="#800000">FILE *p1, *p2; <br/>
+p1=fopen(&ldquo;data&rdquo;,&rdquo;r&rdquo;); <br/>
+p2=fopen(&ldquo;results&rdquo;,&rdquo;w&rdquo;); </font></p>
+<p>In these statements the p1 and p2 are created and assigned to open the files data and results respectively the file data is opened for reading and result is opened for writing. In case the results file already exists, its contents are deleted and the files are opened as a new file. If data file does not exist error will occur. </p>
+<h4><font color="#0000ff">Closing a file: </font></h4>
+<p>The input output library supports the function to close a file; it is in the following format. <br/>
+fclose(file_pointer); <br/>
+<br/>
+A file must be closed as soon as all operations on it have been completed. This would close the file associated with the file pointer. <br/>
+Observe the following program. </p>
+<p><font face="Courier New" color="#800000">&hellip;. <br/>
+FILE *p1 *p2; <br/>
+p1=fopen (&ldquo;Input&rdquo;,&rdquo;w&rdquo;); <br/>
+p2=fopen (&ldquo;Output&rdquo;,&rdquo;r&rdquo;); <br/>
+&hellip;. <br/>
+&hellip; <br/>
+fclose(p1); <br/>
+fclose(p2)</font> </p>
+<p>The above program opens two files and closes them after all operations on them are completed, once a file is closed its file pointer can be reversed on other file. <br/>
+<br/>
+The getc and putc functions are analogous to getchar and putchar functions and handle one character at a time. The putc function writes the character contained in character variable c to the file associated with the pointer fp1. ex putc(c,fp1); similarly getc function is used to read a character from a file that has been open in read mode. c=getc(fp2). </p>
+<p>The program shown below displays use of a file operations. The data enter through the keyboard and the program writes it. Character by character, to the file input. The end of the data is indicated by entering an EOF character, which is control-z. the file input is closed at this signal. <br/>
+<br/>
+<font face="Courier New" color="#800000">#include&lt; stdio.h &gt; <br/>
+main() <br/>
+{ <br/>
+file *f1; <br/>
+printf(&ldquo;Data input output&rdquo;); <br/>
+f1=fopen(&ldquo;Input&rdquo;,&rdquo;w&rdquo;); /*Open the file Input*/ <br/>
+while((c=getchar())!=EOF) /*get a character from key board*/ <br/>
+putc(c,f1); /*write a character to input*/ <br/>
+fclose(f1); /*close the file input*/ <br/>
+printf(&ldquo;nData outputn&rdquo;); <br/>
+f1=fopen(&ldquo;INPUT&rdquo;,&rdquo;r&rdquo;); /*Reopen the file input*/ <br/>
+while((c=getc(f1))!=EOF) <br/>
+printf(&ldquo;%c&rdquo;,c); <br/>
+fclose(f1); <br/>
+} </font></p>
+<h4><font color="#0000ff">The getw and putw functions: </font></h4>
+<p>These are integer-oriented functions. They are similar to get c and putc functions and are used to read and write integer values. These functions would be usefull when we deal with only integer data. The general forms of getw and putw are: </p>
+<p><font face="Courier New" color="#800000">putw(integer,fp); <br/>
+getw(fp); </font></p>
+<p><font face="Courier New" color="#800000">/*Example program for using getw and putw functions*/ <br/>
+#include&lt; stdio.h &gt; <br/>
+main() <br/>
+{ <br/>
+FILE *f1,*f2,*f3; <br/>
+int number I; <br/>
+printf(&ldquo;Contents of the data filenn&rdquo;); <br/>
+f1=fopen(&ldquo;DATA&rdquo;,&rdquo;W&rdquo;); <br/>
+for(I=1;I&lt; 30;I++) <br/>
+{ <br/>
+scanf(&ldquo;%d&rdquo;,&amp;number); <br/>
+if(number==-1) <br/>
+break; <br/>
+putw(number,f1); <br/>
+} <br/>
+fclose(f1); <br/>
+f1=fopen(&ldquo;DATA&rdquo;,&rdquo;r&rdquo;); <br/>
+f2=fopen(&ldquo;ODD&rdquo;,&rdquo;w&rdquo;); <br/>
+f3=fopen(&ldquo;EVEN&rdquo;,&rdquo;w&rdquo;); <br/>
+while((number=getw(f1))!=EOF)/* Read from data file*/ <br/>
+{ <br/>
+if(number%2==0) <br/>
+putw(number,f3);/*Write to even file*/ <br/>
+else <br/>
+putw(number,f2);/*write to odd file*/ <br/>
+} <br/>
+fclose(f1); <br/>
+fclose(f2); <br/>
+fclose(f3); <br/>
+f2=fopen(&ldquo;ODD&rdquo;,&rdquo;r&rdquo;); <br/>
+f3=fopen(&ldquo;EVEN&rdquo;,&rdquo;r&rdquo;); <br/>
+printf(&ldquo;nnContents of the odd filenn&rdquo;); <br/>
+while(number=getw(f2))!=EOF) <br/>
+printf(&ldquo;%d%d&rdquo;,number); <br/>
+printf(&ldquo;nnContents of the even file&rdquo;); <br/>
+while(number=getw(f3))!=EOF) <br/>
+printf(&ldquo;%d&rdquo;,number); <br/>
+fclose(f2); <br/>
+fclose(f3); <br/>
+} </font></p>
+<h4><font color="#0000ff">The fprintf &amp; fscanf functions: </font></h4>
+<p>The fprintf and fscanf functions are identical to printf and scanf functions except that they work on files. The first argument of theses functions is a file pointer which specifies the file to be used. The general form of fprintf is </p>
+<p><font face="Courier New" color="#800000">fprintf(fp,&rdquo;control string&rdquo;, list); </font></p>
+<p>Where fp id a file pointer associated with a file that has been opened for writing. The control string is file output specifications list may include variable, constant and string. </p>
+<p><font face="Courier New" color="#800000">fprintf(f1,%s%d%f&rdquo;,name,age,7.5); </font></p>
+<p>Here name is an array variable of type char and age is an int variable <br/>
+The general format of fscanf is </p>
+<p><font face="Courier New" color="#800000">fscanf(fp,&rdquo;controlstring&rdquo;,list); </font></p>
+<p>This statement would cause the reading of items in the control string. <br/>
+<br/>
+<strong>Example: <br/>
+</strong><br/>
+<font face="Courier New" color="#800000">fscanf(f2,&rdquo;5s%d&rdquo;,item,&amp;quantity&rdquo;); </font></p>
+<p>Like scanf, fscanf also returns the number of items that are successfully read. <br/>
+<br/>
+<font face="Courier New" color="#800000">/*Program to handle mixed data types*/ <br/>
+#include&lt; stdio.h &gt; <br/>
+main() <br/>
+{ <br/>
+FILE *fp; <br/>
+int num,qty,I; <br/>
+float price,value; <br/>
+char item[10],filename[10]; <br/>
+printf(&ldquo;Input filename&rdquo;); <br/>
+scanf(&ldquo;%s&rdquo;,filename); <br/>
+fp=fopen(filename,&rdquo;w&rdquo;); <br/>
+printf(&ldquo;Input inventory datann&rdquo;0; <br/>
+printf(&ldquo;Item namem number price quantityn&rdquo;); <br/>
+for I=1;I&lt; =3;I++) <br/>
+{ <br/>
+fscanf(stdin,&rdquo;%s%d%f%d&rdquo;,item,&amp;number,&amp;price,&amp;quality); <br/>
+fprintf(fp,&rdquo;%s%d%f%d&rdquo;,itemnumber,price,quality); <br/>
+} <br/>
+fclose (fp); <br/>
+fprintf(stdout,&rdquo;nn&rdquo;); <br/>
+fp=fopen(filename,&rdquo;r&rdquo;); <br/>
+printf(&ldquo;Item name number price quantity value&rdquo;); <br/>
+for(I=1;I&lt; =3;I++) <br/>
+{ <br/>
+fscanf(fp,&rdquo;%s%d%f%d&rdquo;,item,&amp;number,&amp;prince,&amp;quality); <br/>
+value=price*quantity&rdquo;); <br/>
+fprintf(&ldquo;stdout,&rdquo;%s%d%f%d%dn&rdquo;,item,number,price,quantity,value); <br/>
+} <br/>
+fclose(fp); <br/>
+}</font></p>
+<h4><font color="#0000ff">Random access to files: </font></h4>
+<p>Sometimes it is required to access only a particular part of the and not the complete file. This can be accomplished by using the following function: </p>
+<p>1 &gt; fseek </p>
+<h4><font color="#0000ff">fseek function: </font></h4>
+<p>The general format of fseek function is a s follows: </p>
+<p><font face="Courier New" color="#800000">fseek(file pointer,offset, position); </font><br/>
+<br/>
+<div style='clear:left; margin-left:20px; float: right; padding-right: 0px; padding-left: 10px; width: auto;'>
+          <b>Ads</b><br><!-- EFS_Center_Bottom_300 -->
+<div id='div-gpt-ad-1345125070791-1' style='width:301px; height:251px;'>
+<script type='text/javascript'>
+googletag.display('div-gpt-ad-1345125070791-1');
+</script>
+</div></div></p>
+<p>This function is used to move the file position to a desired location within the file. Fileptr <br/>
+is a pointer to the file concerned. Offset is a number or variable of type long, and position in an integer number. Offset specifies the number of positions (bytes) to be moved from the location specified bt the position. The position can take the 3 values. </p>
+<p>Value Meaning <br/>
+0 Beginning of the file <br/>
+1 Current position <br/>
+2 End of the file. </p><style>
+a.page_box
+{
+	padding:5px 10px 5px 10px;
+	margin:4px;
+	background-color: #D1E1F1;
+    color: #032846;
+    border: solid 1px #2C475D;
+}
+a.page_box:hover
+{
+	padding:5px 10px 5px 10px;
+	margin:4px;
+	background-color: #032846;
+    color: #D1E1F1;
+    border: solid 1px #024A2D;
+    text-decoration:none;
+}
+a.page_box_current
+{
+	padding:5px 10px 5px 10px;
+	margin:4px;
+    background-color: #fff;
+    color: #1A3B6F;
+    border: solid 1px #000;
+}        	
+a.page_box_current:hover
+{
+	padding:5px 10px 5px 10px;
+	margin:4px;
+    background-color: #fff;
+    color: #1A3B6F;
+    border: solid 1px #000;
+    text-decoration:none;
+        }        	
+</style><div style="width:250px; float:right; margin:5px 0 20px 0; text-align:right;"></div></div><div style='width:65%; clear:both; margin-top:25px; border-width:1px 0 0 0; border-style:solid; padding-top:10px; text-align:right; float:right;'><b>Read Next:</b> <a href='http://www.exforsys.com/tutorials/c-language/the-preprocessor-in-c.html'><b>C Language - The Preprocessor</b></a></div><br><br><div id="last" style="width:100%; clear:both; height:10px;">&nbsp;</div>This tutorial is part of a C Tutorials tutorial series. Read it from the beginning and learn yourself.<p class="box_label"><b>C Tutorials</b></p><div class='right_articles'><ol style="margin:0 0 0 -10px; list-style-type:decimal; list-style-position:outside;"><li><a href='http://www.exforsys.com/tutorials/c-language/c-programming-an-overview.html'>C Programming - An Overview</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-programming-language-data-types.html'>C Programming - Data Types : Part 1</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-programming-data-types-part-2.html'>C Programming - Data Types : Part 2</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-programming-constants-and-variables.html'>C Programming - Constants and Identifiers</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-operators.html'>C Programming - Operators</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-expressions.html'>C Programming - Expressions</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/managing-input-and-output-operations-in-c.html'>C Programming - Managing Input and Output Operations</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/decision-making-and-branching-in-c.html'>C Programming - Decision Making - Branching</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/decision-making-looping-in-c.html'>C Programming - Decision Making - Looping</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-arrays.html'>C Programming - Arrays</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/handling-of-character-strings-in-c.html'>C Programming - Handling of Character String</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-functions-part-1.html'>C Programming - Functions (Part-I)</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-functions-part-2.html'>C Programming - Functions (Part-II)</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-structures-and-unions.html'>C Programming - Structures and Unions</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-pointers.html'>C Programming - Pointers</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/dynamic-memory-allocation-in-c.html'>C Programming - Dynamic Memory allocation</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/c-linked-lists.html'>C Programming - Linked Lists</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/doubly-linked-lists.html'>C Doubly Linked Lists</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/circular-linked-lists.html'>C Circular Linked Lists</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/file-management-in-c.html'>C Programming - File management in C</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/the-preprocessor-in-c.html'>C Language - The Preprocessor</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/call-by-value-and-call-by-reference.html'>Call by Value and Call by Reference</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/concept-of-pixel-in-c-graphics.html'>Concept of Pixel in C Graphics</a></li><li><a href='http://www.exforsys.com/tutorials/c-language/tsr-in-c-an-introduction.html'>TSR in C - An Introduction</a></li></ol></div><div style="width:100%; clear:both; height:10px;">&nbsp;</div><h4>Comments</h4>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'exforsys'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <div style='clear: both; height:25px;'>&nbsp;</div>					
+					</div>
+				   <div class="cleared"></div>
+				 </div>
+			     <div class="cleared"></div>
+		     </div>
+          </div>
+</div>
+<div style="text-align:right;"><a class="efstop" href="#efstop">Go Top</a></div></div>
+<div style="width:320px; float:right;">
+<div class="art-layout-cell art-sidebar2">
+	
+
+
+		
+	<div class="art-block">
+		<div class="art-block-body">
+			<div class="art-blockheader">
+				<h3 class="t">Ads</h3>
+			</div>
+			<div class="art-blockcontent">
+				<div class="art-blockcontent-body">
+
+<!-- EFS_Center_Top_300 -->
+<div id='div-gpt-ad-1345125070791-3' style='width:300px; height:251px;'>
+<script type='text/javascript'>
+googletag.display('div-gpt-ad-1345125070791-3');
+</script>
+</div>
+					
+					<div class="cleared"></div>
+				</div>
+			</div>
+			<div class="cleared"></div>
+		</div>
+	</div>
+	
+    <div class="art-block">
+        <div class="art-block-body">
+            <div class="art-blockheader">
+                <h3 style="margin-top:-3px;" class="t">Connect</h3>
+            </div>
+            <div class="art-blockcontent">
+                <div class="art-blockcontent-body">
+                <!-- vamsee     <div style="background-color: #fff; width:92%; margin:2%; padding:2%;">
+                    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+                    <div class="fb-like-box" data-href="http://www.facebook.com/exforsys" data-width="283" data-show-faces="false" data-stream="false" data-header="true"></div>
+                    </div> -->                              
+                    <div style="float:left; background-color: #fff; width:102%; overflow:hidden; height:170px; margin:-25px% 0 1% 0; padding:0;">
+                        <a target="_blank" href="https://www.twitter.com/exforsys" target><img alt="" src="/template/exforsys_blue/images/daily2.png" width="50" height="50" border="none"/></a>                                                    
+                        <a target="_blank" href="https://www.facebook.com/exforsys"><img alt="" src="/template/exforsys_blue/images/daily3.png" width="50" height="50" border="none"/></a>                                               
+                        <a target="_blank"href="http://www.linkedin.com/groups?gid=3706673"><img alt="" src="/template/exforsys_blue/images/daily4.png" width="50" height="50" border="none"/></a>
+                        <!--                                                                                                     
+                        <a target="_blank" href="https://plus.google.com/u/0/103983743727541634391/posts"><img alt="" src="/template/exforsys_blue/images/daily6.png" width="50" height="50" border="none"/></a> -->
+
+                        <a target="_blank" href="https://plus.google.com/103983743727541634391/?prsrc=3" style="text-decoration: none; "><img alt="" src="/template/exforsys_blue/images/daily6.png" width="50" height="50" border="none"/></a>
+                        <a target="_blank" href="http://feeds.feedburner.com/Exforsyscom"><img alt="" src="/template/exforsys_blue/images/daily5.png" width="50" height="50" border="none"/></a>
+                        <div style="margin-top:-15px;">
+                        <g:plus href="https://plus.google.com/103983743727541634391" size="badge"></g:plus>
+                        </div>  
+                    </div>                              
+                    <div class="cleared"></div>
+                </div>
+            </div>
+            <div class="cleared"></div>
+        </div>
+    </div>
+
+
+
+             <div class="art-blockheader">
+                <h3 style="margin-top:-15px;" class="t">Ads</h3>
+            </div>             
+            <div class="art-blockcontent">
+                <div class="art-blockcontent-body">              
+                    </br>
+
+<!-- EFS_RIGHT_300_600 -->
+<div id='div-gpt-ad-1345125070791-9' style='width:300px; height:600px;'>
+<script type='text/javascript'>
+googletag.display('div-gpt-ad-1345125070791-9');
+</script>
+</div>
+
+                    <div class="cleared"></div>
+                </div>
+            </div>
+
+	
+	
+
+	
+		<div class="art-block">
+		<div class="art-block-body">
+			<div class="art-blockheader">
+				<h3 class="t">Related Articles</h3>
+			</div>
+			<div class="art-blockcontent">
+				<div class="art-blockcontent-body">
+					<ol><li><a href='http://www.exforsys.com/tutorials/testing/software-quality-management.html'>Software Quality Management</a></li><li><a href='http://www.exforsys.com/tutorials/testing/auditing-software-testing-process.html'>Auditing Software Testing Process</a></li><li><a href='http://www.exforsys.com/tutorials/supply-chain/supply-chain-management-software.html'>Supply Chain Management Software</a></li><li><a href='http://www.exforsys.com/tutorials/supply-chain/which-supply-chain-management-software-is-right-for-your-business.html'>Which Supply Chain Management Software is Right for your Business?</a></li><li><a href='http://www.exforsys.com/career-center/risk-management/understanding-risk-management-process.html'>Understanding the Risk Management Process</a></li><li><a href='http://www.exforsys.com/career-center/project-management-process/project-risk-management-process.html'>Project Risk Management Process</a></li><li><a href='http://www.exforsys.com/career-center/project-management-process/project-management-software.html'>Software for Project Management</a></li><li><a href='http://www.exforsys.com/career-center/process-management/business-process-management.html'>Business Process Management</a></li><li><a href='http://www.exforsys.com/reviews/books/oracle-siebel-crm-8-installation-review.html'>Oracle Siebel CRM 8 Installation and Management Review</a></li><li><a href='http://www.exforsys.com/free stuff/get-trial-software-articles-demos-and-more-from-ibm.html'>Get trial software,articles, demos and more from IBM</a></li><li><a href='http://www.exforsys.com/reviews/oracle-vm-manager/oracle-vm-management-server-pool.html'>Oracle VM management: Managing Server Pool</a></li><li><a href='http://www.exforsys.com/career-center/process-management/sdlc-process.html'>SDLC Process</a></li><li><a href='http://www.exforsys.com/reviews/oracle-vm-manager/managing-vm-servers-and-repositories.html'>Oracle VM Management: Managing VM Servers and Repositories</a></li><li><a href='http://www.exforsys.com/reviews/oracle-vm-manager/oracle-vm-management.html'>Oracle VM Management</a></li><li><a href='http://www.exforsys.com/reviews/oracle-vm-manager/oracle-vm-manag-user-group-management.html'>Oracle VM Manager: User and Group Management</a></li></ul> 
+				</div>
+			</div>
+			<div class="cleared"></div>
+		</div>
+	</div>
+		<div class="art-block">
+		<div class="art-block-body">
+			<div class="art-blockheader">
+				<h3 class="t">Exforsys e-Newsletter</h3>
+			</div>
+			<div class="art-blockcontent">
+				<div class="art-blockcontent-body">
+					<div>
+						<p>
+							Enhance Technical and Soft Skills every week, get our Job Interview Questions and Answers eBook free when you subscribe.
+						</p>
+						<h5>Subscribe and Get Free Bonus PDF Book</h5>
+						<p>
+							<a href="/email-subscription.html"><img src="/images/ebooksub.png" alt="eBook" /></a>
+						</p>
+						<p style="margin-top:5px; clear:both;">
+							<a href="/email-subscription.html"><img border="0" src="/images/efssub.png" alt="Subscribe" style="border-width:0;" /></a>
+						</p>
+					</div>
+					<div class="cleared"></div>
+				</div>
+			</div>
+			<div class="cleared"></div>
+		</div>
+	</div>
+
+
+	
+	 <div class="cleared"></div>
+</div></div>
+</div>
+</div> <div class="cleared"></div>
+<div class="art-footer">
+	<div class="art-footer-t"></div>
+	<div class="art-footer-body">
+		<a href="http://feeds.feedburner.com/Exforsyscom" class="art-rss-tag-icon" title="RSS"></a>
+		<div class="art-footer-text">
+			<a class="flink" href="http://www.exforsys.com/privacy-and-legal.html">Privacy and Legal</a> | <a class="flink" href="http://www.exforsys.com/contact.html">Contact Us</a> | <a class="flink" href="http://www.exforsys.com/dmca.html">DMCA</a> | <a class="flink" href="http://www.exforsys.com/sitemap.html">Sitemap</a>
+			<p style="margin: 10px 0 0 0;">
+				Copyright &copy; 2000 - 2012 exforsys.com. All Rights Reserved
+			</p>
+					</div>
+		<div class="cleared"></div>
+	</div>
+</div>
+<div class="cleared"></div>
+</div>
+</div> <div class="cleared"></div>
+<p class="art-page-footer"></p>
+<div class="cleared"></div>
+
+
+<!-- EFS_Misc_Footer -->
+<div id='div-gpt-ad-1345125070791-8' style='width:1px; height:2px;'>
+<script type='text/javascript'>
+googletag.display('div-gpt-ad-1345125070791-8');
+</script>
+</div>
+
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-aeeYx09OaN2Jo"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-aeeYx09OaN2Jo.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+</div> <!-- Begin analytics -->
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-61665-2']);
+	_gaq.push(['_trackPageview']); (function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+<!-- End analytics -->
+</body> </html>

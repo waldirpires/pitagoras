@@ -1,0 +1,1050 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" class="client-nojs" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>C Programming/File IO - Wikibooks, open books for an open world</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="generator" content="MediaWiki 1.20wmf10" />
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/w/index.php?title=C_Programming/File_IO&amp;action=edit" />
+<link rel="edit" title="Edit" href="/w/index.php?title=C_Programming/File_IO&amp;action=edit" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikibooks (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikibooks.org/w/api.php?action=rsd" />
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/" />
+<link rel="alternate" type="application/atom+xml" title="Wikibooks Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="//bits.wikimedia.org/en.wikibooks.org/load.php?debug=false&amp;lang=en&amp;modules=ext.flaggedRevs.basic%7Cext.gadget.extlinks%7Cext.geshi.local%7Cext.wikihiero%7Cmediawiki.legacy.commonPrint%2Cshared%7Cskins.vector&amp;only=styles&amp;skin=vector&amp;*" type="text/css" media="all" />
+<link rel="stylesheet" href="//bits.wikimedia.org/static-1.20wmf10/extensions/ReaderFeedback/readerfeedback.css?1" type="text/css" media="all" /><meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="//bits.wikimedia.org/en.wikibooks.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=vector&amp;*" type="text/css" media="all" />
+<style type="text/css" media="all">a:lang(ar),a:lang(ckb),a:lang(fa),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+
+/* cache key: enwikibooks:resourceloader:filter:minify-css:7:c34bf104bfa86a6b82ad98966aa7c446 */
+</style>
+
+<script src="//bits.wikimedia.org/en.wikibooks.org/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector&amp;*" type="text/javascript"></script>
+<script type="text/javascript">if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"C_Programming/File_IO","wgTitle":"C Programming/File IO","wgCurRevisionId":2267611,"wgArticleId":23135,"wgIsArticle":true,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["C Programming"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"C_Programming/File_IO","wgRestrictionEdit":[],"wgRestrictionMove":[],"wgSearchNamespaces":[0,4,112],"wgVectorEnabledModules":{"collapsiblenav":true,"collapsibletabs":true,"editwarning":true,"expandablesearch":false,"footercleanup":false,"sectioneditlinks":false,"simplesearch":true,"experiments":true},"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"templateEditor":false,"templates":false,"preview":false,"previewDialog":false,"publish":false,"toc":false},"wgFeedbackParams":{"tags":{"reliability":3,"completeness":2,"npov":2,"presentation":1}},"wgAjaxFeedback":{"sendingMsg":"Submitting …","sentMsg":"Thank you!"},"wgFlaggedRevsParams":{"tags":{"value":{"levels":3,"quality":2,"pristine":3}}},"wgStableRevisionId":2267611,"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","Geo":{"city":"","country":""},"wgNoticeProject":"wikibooks"});
+}</script><script type="text/javascript">if(window.mw){
+mw.loader.implement("user.options",function(){mw.user.options.set({"ccmeonemails":0,"cols":80,"date":"default","diffonly":0,"disablemail":0,"disablesuggest":0,"editfont":"default","editondblclick":0,"editsection":1,"editsectiononrightclick":0,"enotifminoredits":0,"enotifrevealaddr":0,"enotifusertalkpages":1,"enotifwatchlistpages":0,"extendwatchlist":0,"externaldiff":0,"externaleditor":0,"fancysig":0,"forceeditsummary":0,"gender":"unknown","hideminor":0,"hidepatrolled":0,"imagesize":2,"justify":0,"math":0,"minordefault":0,"newpageshidepatrolled":0,"nocache":0,"noconvertlink":0,"norollbackdiff":0,"numberheadings":0,"previewonfirst":0,"previewontop":1,"quickbar":5,"rcdays":7,"rclimit":50,"rememberpassword":0,"rows":25,"searchlimit":20,"showhiddencats":false,"showjumplinks":1,"shownumberswatching":1,"showtoc":1,"showtoolbar":1,"skin":"vector","stubthreshold":0,"thumbsize":4,"underline":2,"uselivepreview":0,"usenewrc":0,"watchcreations":1,"watchdefault":0,"watchdeletion":0,"watchlistdays":3
+,"watchlisthideanons":0,"watchlisthidebots":0,"watchlisthideliu":0,"watchlisthideminor":0,"watchlisthideown":0,"watchlisthidepatrolled":0,"watchmoves":0,"wllimit":250,"flaggedrevssimpleui":0,"flaggedrevsstable":0,"flaggedrevseditdiffs":true,"flaggedrevsviewdiffs":false,"vector-simplesearch":1,"useeditwarning":1,"vector-collapsiblenav":1,"usebetatoolbar":1,"usebetatoolbar-cgd":1,"variant":"en","language":"en","searchNs0":true,"searchNs1":false,"searchNs2":false,"searchNs3":false,"searchNs4":true,"searchNs5":false,"searchNs6":false,"searchNs7":false,"searchNs8":false,"searchNs9":false,"searchNs10":false,"searchNs11":false,"searchNs12":false,"searchNs13":false,"searchNs14":false,"searchNs15":false,"searchNs102":false,"searchNs103":false,"searchNs108":false,"searchNs109":false,"searchNs110":false,"searchNs111":false,"searchNs112":true,"searchNs113":false,"gadget-extlinks":1,"gadget-commons-file":1,"gadget-toolboxcompat":1});;},{},{});mw.loader.implement("user.tokens",function(){mw.user.
+tokens.set({"editToken":"+\\","watchToken":false});;},{},{});
+
+/* cache key: enwikibooks:resourceloader:filter:minify-js:7:73c7fd9b32f09ca4e03afb736e277ea1 */
+}</script>
+<script type="text/javascript">if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","ext.centralNotice.bannerController"]);
+}</script>
+<style type="text/css">/*<![CDATA[*/
+.source-c {line-height: normal;}
+.source-c li, .source-c pre {
+	line-height: normal; border: 0px none white;
+}
+/**
+ * GeSHi Dynamically Generated Stylesheet
+ * --------------------------------------
+ * Dynamically generated stylesheet for c
+ * CSS class: source-c, CSS id: 
+ * GeSHi (C) 2004 - 2007 Nigel McNie, 2007 - 2008 Benny Baumann
+ * (http://qbnz.com/highlighter/ and http://geshi.org/)
+ * --------------------------------------
+ */
+.c.source-c .de1, .c.source-c .de2 {font: normal normal 1em/1.2em monospace; margin:0; padding:0; background:none; vertical-align:top;}
+.c.source-c  {font-family:monospace;}
+.c.source-c .imp {font-weight: bold; color: red;}
+.c.source-c li, .c.source-c .li1 {font-weight: normal; vertical-align:top;}
+.c.source-c .ln {width:1px;text-align:right;margin:0;padding:0 2px;vertical-align:top;}
+.c.source-c .li2 {font-weight: bold; vertical-align:top;}
+.c.source-c .kw1 {color: #b1b100;}
+.c.source-c .kw2 {color: #000000; font-weight: bold;}
+.c.source-c .kw3 {color: #000066;}
+.c.source-c .kw4 {color: #993333;}
+.c.source-c .co1 {color: #666666; font-style: italic;}
+.c.source-c .co2 {color: #339933;}
+.c.source-c .coMULTI {color: #808080; font-style: italic;}
+.c.source-c .es0 {color: #000099; font-weight: bold;}
+.c.source-c .es1 {color: #000099; font-weight: bold;}
+.c.source-c .es2 {color: #660099; font-weight: bold;}
+.c.source-c .es3 {color: #660099; font-weight: bold;}
+.c.source-c .es4 {color: #660099; font-weight: bold;}
+.c.source-c .es5 {color: #006699; font-weight: bold;}
+.c.source-c .br0 {color: #009900;}
+.c.source-c .sy0 {color: #339933;}
+.c.source-c .st0 {color: #ff0000;}
+.c.source-c .nu0 {color: #0000dd;}
+.c.source-c .nu6 {color: #208080;}
+.c.source-c .nu8 {color: #208080;}
+.c.source-c .nu12 {color: #208080;}
+.c.source-c .nu16 {color:#800080;}
+.c.source-c .nu17 {color:#800080;}
+.c.source-c .nu18 {color:#800080;}
+.c.source-c .nu19 {color:#800080;}
+.c.source-c .me1 {color: #202020;}
+.c.source-c .me2 {color: #202020;}
+.c.source-c .ln-xtra, .c.source-c li.ln-xtra, .c.source-c div.ln-xtra {background-color: #ffc;}
+.c.source-c span.xtra { display:block; }
+
+/*]]>*/
+</style><script src="//bits.wikimedia.org/geoiplookup"></script><!--[if lt IE 7]><style type="text/css">body{behavior:url("/w/skins-1.20wmf10/vector/csshover.min.htc")}</style><![endif]--></head>
+<body class="mediawiki ltr sitedir-ltr ns-0 ns-subject page-C_Programming_File_IO skin-vector action-view vector-animateLayout">
+		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<!-- content -->
+		<div id="content" class="mw-body">
+			<a id="top"></a>
+			<div id="mw-js-message" style="display:none;"></div>
+						<!-- sitenotice -->
+			<div id="siteNotice"><!-- CentralNotice --><script>mw.centralNotice.initialize();</script></div>
+			<!-- /sitenotice -->
+						<!-- firstHeading -->
+			<h1 id="firstHeading" class="firstHeading"><span dir="auto">C Programming/File IO</span></h1>
+			<!-- /firstHeading -->
+			<!-- bodyContent -->
+			<div id="bodyContent">
+								<!-- tagline -->
+				<div id="siteSub">From Wikibooks, open books for an open world</div>
+				<!-- /tagline -->
+								<!-- subtitle -->
+				<div id="contentSub"><span class="subpages">&lt; <a href="/wiki/C_Programming" title="C Programming">C Programming</a></span></div>
+				<!-- /subtitle -->
+																<!-- jumpto -->
+				<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<!-- /jumpto -->
+								<!-- bodycontent -->
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><table class="noprint" style="border:1px solid black; width:100%; border-spacing:0px; margin:0.25em;">
+<tr>
+<td style="width:33%; background:#ffffe0;"><a href="/wiki/C_Programming/Standard_libraries" title="C Programming/Standard libraries">Previous: Standard libraries</a></td>
+<td style="width:33%; background:#ffffe0; text-align:center;"><a href="/wiki/C_Programming" title="C Programming">Index</a></td>
+<td style="width:33%; background:#ffffe0; text-align:right;"><a href="/wiki/C_Programming/Beginning_exercises" title="C Programming/Beginning exercises">Next: Beginning exercises</a></td>
+</tr>
+</table>
+<table id="toc" class="toc">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Streams"><span class="tocnumber">2</span> <span class="toctext">Streams</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Standard_Streams"><span class="tocnumber">3</span> <span class="toctext">Standard Streams</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#FILE_pointers"><span class="tocnumber">4</span> <span class="toctext">FILE pointers</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Opening_and_Closing_Files"><span class="tocnumber">5</span> <span class="toctext">Opening and Closing Files</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Opening_Files"><span class="tocnumber">5.1</span> <span class="toctext">Opening Files</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Closing_Files"><span class="tocnumber">5.2</span> <span class="toctext">Closing Files</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-8"><a href="#Other_file_access_functions"><span class="tocnumber">6</span> <span class="toctext">Other file access functions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-9"><a href="#The_fflush_function"><span class="tocnumber">6.1</span> <span class="toctext">The fflush function</span></a></li>
+<li class="toclevel-2 tocsection-10"><a href="#The_setbuf_function"><span class="tocnumber">6.2</span> <span class="toctext">The setbuf function</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#The_setvbuf_function"><span class="tocnumber">6.3</span> <span class="toctext">The setvbuf function</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Functions_that_Modify_the_File_Position_Indicator"><span class="tocnumber">7</span> <span class="toctext">Functions that Modify the File Position Indicator</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="#The_fgetpos_and_fsetpos_functions"><span class="tocnumber">7.1</span> <span class="toctext">The fgetpos and fsetpos functions</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#The_fseek_and_ftell_functions"><span class="tocnumber">7.2</span> <span class="toctext">The fseek and ftell functions</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#The_rewind_function"><span class="tocnumber">7.3</span> <span class="toctext">The rewind function</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-16"><a href="#Error_Handling_Functions"><span class="tocnumber">8</span> <span class="toctext">Error Handling Functions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-17"><a href="#The_clearerr_function"><span class="tocnumber">8.1</span> <span class="toctext">The clearerr function</span></a></li>
+<li class="toclevel-2 tocsection-18"><a href="#The_feof_function"><span class="tocnumber">8.2</span> <span class="toctext">The feof function</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#The_ferror_function"><span class="tocnumber">8.3</span> <span class="toctext">The ferror function</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="#The_perror_function"><span class="tocnumber">8.4</span> <span class="toctext">The perror function</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-21"><a href="#Other_Operations_on_Files"><span class="tocnumber">9</span> <span class="toctext">Other Operations on Files</span></a>
+<ul>
+<li class="toclevel-2 tocsection-22"><a href="#The_remove_function"><span class="tocnumber">9.1</span> <span class="toctext">The remove function</span></a></li>
+<li class="toclevel-2 tocsection-23"><a href="#The_rename_function"><span class="tocnumber">9.2</span> <span class="toctext">The rename function</span></a></li>
+<li class="toclevel-2 tocsection-24"><a href="#The_tmpfile_function"><span class="tocnumber">9.3</span> <span class="toctext">The tmpfile function</span></a></li>
+<li class="toclevel-2 tocsection-25"><a href="#The_tmpnam_function"><span class="tocnumber">9.4</span> <span class="toctext">The tmpnam function</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-26"><a href="#Reading_from_Files"><span class="tocnumber">10</span> <span class="toctext">Reading from Files</span></a>
+<ul>
+<li class="toclevel-2 tocsection-27"><a href="#Character_Input_Functions"><span class="tocnumber">10.1</span> <span class="toctext">Character Input Functions</span></a>
+<ul>
+<li class="toclevel-3 tocsection-28"><a href="#The_fgetc_function"><span class="tocnumber">10.1.1</span> <span class="toctext">The fgetc function</span></a></li>
+<li class="toclevel-3 tocsection-29"><a href="#The_fgets_function"><span class="tocnumber">10.1.2</span> <span class="toctext">The fgets function</span></a></li>
+<li class="toclevel-3 tocsection-30"><a href="#The_getc_function"><span class="tocnumber">10.1.3</span> <span class="toctext">The getc function</span></a></li>
+<li class="toclevel-3 tocsection-31"><a href="#The_getchar_function"><span class="tocnumber">10.1.4</span> <span class="toctext">The getchar function</span></a></li>
+<li class="toclevel-3 tocsection-32"><a href="#The_gets_function"><span class="tocnumber">10.1.5</span> <span class="toctext">The gets function</span></a></li>
+<li class="toclevel-3 tocsection-33"><a href="#The_ungetc_function"><span class="tocnumber">10.1.6</span> <span class="toctext">The ungetc function</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-34"><a href="#EOF_pitfall"><span class="tocnumber">10.2</span> <span class="toctext">EOF pitfall</span></a></li>
+<li class="toclevel-2 tocsection-35"><a href="#Direct_input_function:_the_fread_function"><span class="tocnumber">10.3</span> <span class="toctext">Direct input function: the fread function</span></a></li>
+<li class="toclevel-2 tocsection-36"><a href="#Formatted_input_functions:_the_scanf_family_of_functions"><span class="tocnumber">10.4</span> <span class="toctext">Formatted input functions: the scanf family of functions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-37"><a href="#Writing_to_Files"><span class="tocnumber">11</span> <span class="toctext">Writing to Files</span></a>
+<ul>
+<li class="toclevel-2 tocsection-38"><a href="#Character_Output_Functions"><span class="tocnumber">11.1</span> <span class="toctext">Character Output Functions</span></a>
+<ul>
+<li class="toclevel-3 tocsection-39"><a href="#The_fputc_function"><span class="tocnumber">11.1.1</span> <span class="toctext">The fputc function</span></a></li>
+<li class="toclevel-3 tocsection-40"><a href="#The_fputs_function"><span class="tocnumber">11.1.2</span> <span class="toctext">The fputs function</span></a></li>
+<li class="toclevel-3 tocsection-41"><a href="#The_putc_function"><span class="tocnumber">11.1.3</span> <span class="toctext">The putc function</span></a></li>
+<li class="toclevel-3 tocsection-42"><a href="#The_putchar_function"><span class="tocnumber">11.1.4</span> <span class="toctext">The putchar function</span></a></li>
+<li class="toclevel-3 tocsection-43"><a href="#The_puts_function"><span class="tocnumber">11.1.5</span> <span class="toctext">The puts function</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-44"><a href="#Direct_output_function:_the_fwrite_function"><span class="tocnumber">11.2</span> <span class="toctext">Direct output function: the fwrite function</span></a></li>
+<li class="toclevel-2 tocsection-45"><a href="#Formatted_output_functions:_the_printf_family_of_functions"><span class="tocnumber">11.3</span> <span class="toctext">Formatted output functions: the printf family of functions</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-46"><a href="#References"><span class="tocnumber">12</span> <span class="toctext">References</span></a></li>
+</ul>
+</td>
+</tr>
+</table>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=1" title="Edit section: Introduction">edit</a>]</span> <span class="mw-headline" id="Introduction">Introduction</span></h2>
+<p>The <code>stdio.h</code> header declares a broad assortment of functions that perform input and output to files and devices such as the console. It was one of the earliest headers to appear in the C library. It declares more functions than any other standard header and also requires more explanation because of the complex machinery that underlies the functions.</p>
+<p>The device-independent model of input and output has seen dramatic improvement over the years and has received little recognition for its success. FORTRAN II was touted as a machine-independent language in the 1960s, yet it was essentially impossible to move a FORTRAN program between architectures without some change. In FORTRAN II, you named the device you were talking to right in the FORTRAN statement in the middle of your FORTRAN code. So, you said <code>READ INPUT TAPE 5</code> on a tape-oriented IBM 7090 but <code>READ CARD</code> to read a card image on other machines. FORTRAN IV had more generic <code>READ</code> and <code>WRITE</code> statements, specifying a <i>logical unit number</i> (LUN) instead of the device name. The era of device-independent I/O had dawned.</p>
+<p>Peripheral devices such as printers still had fairly strong notions about what they were asked to do. And then, <i>peripheral interchange</i> utilities were invented to handle bizarre devices. When cathode-ray tubes came onto the scene, each manufacturer of consoles solved problems such as console cursor movement in an independent manner, causing further headaches.</p>
+<p>It was into this atmosphere that Unix was born. Ken Thompson and Dennis Ritchie, the developers of Unix, deserve credit for packing any number of bright ideas into the operating system. Their approach to device independence was one of the brightest.</p>
+<p>The ANSI C <code>&lt;stdio.h&gt;</code> library is based on the original Unix file I/O primitives but casts a wider net to accommodate the least-common denominator across varied systems.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=2" title="Edit section: Streams">edit</a>]</span> <span class="mw-headline" id="Streams">Streams</span></h2>
+<p>Input and output, whether to or from physical devices such as terminals and tape drives, or whether to or from files supported on structured storage devices, are mapped into logical data streams, whose properties are more uniform than their various inputs and outputs. Two forms of mapping are supported: text streams and binary streams.</p>
+<p>A text stream consists of one or more lines. A line in a text stream consists of zero or more characters plus a terminating new-line character. (The only exception is that in some implementations the last line of a file does not require a terminating new-line character.) Unix adopted a standard internal format for all text streams. Each line of text is terminated by a new-line character. That's what any program expects when it reads text, and that's what any program produces when it writes text. (This is the most basic convention, and if it doesn't meet the needs of a text-oriented peripheral attached to a Unix machine, then the fix-up occurs out at the edges of the system. Nothing in between needs to change.) The string of characters that go into, or come out of a text stream may have to be modified to conform to specific conventions. This results in a possible difference between the data that go into a text stream and the data that come out. For instance, in some implementations when a space-character precedes a new-line character in the input, the space character gets removed out of the output. In general, when the data only consist of printable characters and the control characters horizontal tab and new-line, the input and output of a text stream are equal.</p>
+<p>Compared to a text stream, a binary stream is pretty straight forward. A binary stream is an ordered sequence of characters that can transparently record internal data. Data written to a binary stream shall always equal the data that gets read out under the same implementation. Binary streams, however, may have an implementation-defined number of null characters appended to the end of the stream. There are no further conventions which need to be considered.</p>
+<p>Nothing in Unix prevents the program from writing arbitrary 8-bit binary codes to any open file, or reading them back unchanged from an adequate repository. Thus, Unix obliterated the long-standing distinction between text streams and binary streams.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=3" title="Edit section: Standard Streams">edit</a>]</span> <span class="mw-headline" id="Standard_Streams">Standard Streams</span></h2>
+<p>When a C program starts its execution the program automatically opens three standard streams named <code>stdin</code>, <code>stdout</code>, and <code>stderr</code>. These are attached for every C program.</p>
+<p>The first standard stream is used for input buffering and the other two are used for output. These streams are sequences of bytes.</p>
+<p>Consider the following program:</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="c source-c">
+<pre class="de1">
+ <span class="coMULTI">/* A example program. */</span>
+ <span class="kw4">int</span> main<span class="br0">(</span><span class="br0">)</span>
+ <span class="br0">{</span>
+     <span class="kw4">int</span> var<span class="sy0">;</span>
+     <span class="kw3">scanf</span> <span class="br0">(</span><span class="st0">"%d"</span><span class="sy0">,</span> <span class="sy0">&amp;</span>var<span class="br0">)</span><span class="sy0">;</span> <span class="coMULTI">/* use stdin for scanning an integer from keyboard. */</span>
+     <span class="kw3">printf</span> <span class="br0">(</span><span class="st0">"%d"</span><span class="sy0">,</span> var<span class="br0">)</span><span class="sy0">;</span> <span class="coMULTI">/* use stdout for printing a character. */</span>
+     <span class="kw1">return</span> <span class="nu0">0</span><span class="sy0">;</span>
+ <span class="br0">}</span>
+ <span class="coMULTI">/* end program. */</span>
+</pre></div>
+</div>
+<p>By default <code>stdin</code> points to the keyboard and <code>stdout</code> and <code>stderr</code> point to the screen. It is possible under Unix and may be possible under other operating systems to redirect input from or output to a file or both.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=4" title="Edit section: FILE pointers">edit</a>]</span> <span class="mw-headline" id="FILE_pointers"><code>FILE</code> pointers</span></h2>
+<p>The <code>&lt;stdio.h&gt;</code> header contains a definition for a type <code>FILE</code> (usually via a <code>typedef</code>) which is capable of processing all the information needed to exercise control over a stream, including its file position indicator, a pointer to the associated buffer (if any), an error indicator that records whether a read/write error has occurred, and an end-of-file indicator that records whether the end of the file has been reached.</p>
+<p>It is considered bad manners to access the contents of <code>FILE</code> directly unless the programmer is writing an implementation of <code>&lt;stdio.h&gt;</code> and its contents. Better access to the contents of <code>FILE</code> is provided via the functions in <code>&lt;stdio.h&gt;</code>. It can be said that the <code>FILE</code> type is an early example of <a href="//en.wikipedia.org/wiki/Object-oriented_programming" class="extiw" title="w:Object-oriented programming">object-oriented programming</a>.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=5" title="Edit section: Opening and Closing Files">edit</a>]</span> <span class="mw-headline" id="Opening_and_Closing_Files">Opening and Closing Files</span></h2>
+<p>To open and close files, the <code>&lt;stdio.h&gt;</code> library has three functions: <code>fopen</code>, <code>freopen</code>, and <code>fclose</code>.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=6" title="Edit section: Opening Files">edit</a>]</span> <span class="mw-headline" id="Opening_Files">Opening Files</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+FILE *fopen(const char *filename, const char *mode);
+FILE *freopen(const char *filename, const char *mode, FILE *stream);
+</pre>
+<p><code>fopen</code> and <code>freopen</code> opens the file whose name is in the string pointed to by <code>filename</code> and associates a stream with it. Both return a pointer to the object controlling the stream, or if the open operation fails a null pointer. The error and end-of-file indicators are cleared, and if the open operation fails error is set. <code>freopen</code> differs from <code>fopen</code> in that the file pointed to by <code>stream</code> is closed first when already open and any close errors are ignored.</p>
+<p><code>mode</code> for both functions points to a string consisting of one of the following sequences:</p>
+<pre>
+r           open a text file for reading
+w           truncate to zero length or create a text file for writing
+a           append; open or create text file for writing at end-of-file
+rb          open binary file for reading
+wb          truncate to zero length or create a binary file for writing
+ab          append; open or create binary file for writing at end-of-file
+r+          open text file for update (reading and writing)
+w+          truncate to zero length or create a text file for update
+a+          append; open or create text file for update
+r+b or rb+  open binary file for update (reading and writing)
+w+b or wb+  truncate to zero length or create a binary file for update
+a+b or ab+  append; open or create binary file for update
+</pre>
+<p>Opening a file with read mode ('<code>r</code>' as the first character in the <code>mode</code> argument) fails if the file does not exist or cannot be read.</p>
+<p>Opening a file with append mode ('<code>a</code>' as the first character in the <code>mode</code> argument) causes all subsequent writes to the file to be forced to the then-current end-of-file, regardless of intervening calls to the <code>fseek</code> function. In some implementations, opening a binary file with append mode ('<code>b</code>' as the second or third character in the above list of <code>mode</code> arguments) may initially position the file position indicator for the stream beyond the last data written, because of null character padding.</p>
+<p>When a file is opened with update mode ('<code>+</code>' as the second or third character in the above list of <code>mode</code> argument values), both input and output may be performed on the associated stream. However, output may not be directly followed by input without an intervening call to the <code>fflush</code> function or to a file positioning function (<code>fseek</code>, <code>fsetpos</code>, or <code>rewind</code>), and input may not be directly followed by output without an intervening call to a file positioning function, unless the input operation encounters end-of-file. Opening (or creating) a text file with update mode may instead open (or create) a binary stream in some implementations.</p>
+<p>When opened, a stream is fully buffered if and only if it can be determined not to refer to an interactive device.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=7" title="Edit section: Closing Files">edit</a>]</span> <span class="mw-headline" id="Closing_Files">Closing Files</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int fclose(FILE *stream);
+</pre>
+<p>The <code>fclose</code> function causes the stream pointed to by <code>stream</code> to be flushed and the associated file to be closed. Any unwritten buffered data for the stream are delivered to the host environment to be written to the file; any unread buffered data are discarded. The stream is disassociated from the file. If the associated buffer was automatically allocated, it is deallocated. The function returns zero if the stream was successfully closed or <code>EOF</code> if any errors were detected.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=8" title="Edit section: Other file access functions">edit</a>]</span> <span class="mw-headline" id="Other_file_access_functions">Other file access functions</span></h2>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=9" title="Edit section: The fflush function">edit</a>]</span> <span class="mw-headline" id="The_fflush_function">The <code>fflush</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int fflush(FILE *stream);
+</pre>
+<p>If <code>stream</code> points to an output stream or an update stream in which the most recent operation was not input, the <code>fflush</code> function causes any unwritten data for that stream to be deferred to the host environment to be written to the file. The behavior of fflush is undefined for input stream.</p>
+<p>If <code>stream</code> is a null pointer, the <code>fflush</code> function performs this flushing action on all streams for which the behavior is defined above.</p>
+<p>The <code>fflush</code> functions returns <code>EOF</code> if a write error occurs, otherwise zero.</p>
+<p>The reason for having a <code>fflush</code> function is because streams in C can have buffered input/output; that is, functions that write to a file actually write to a buffer inside the <code>FILE</code> structure. If the buffer is filled to capacity, the write functions will call <code>fflush</code> to actually "write" the data that is in the buffer to the file. Because <code>fflush</code> is only called every once in a while, calls to the operating system to do a raw write are minimized.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=10" title="Edit section: The setbuf function">edit</a>]</span> <span class="mw-headline" id="The_setbuf_function">The <code>setbuf</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+void setbuf(FILE *stream, char *buf);
+</pre>
+<p>Except that it returns no value, the <code>setbuf</code> function is equivalent to the <code>setvbuf</code> function invoked with the values <code>_IOFBF</code> for <code>mode</code> and <code>BUFSIZ</code> for <code>size</code>, or (if <code>buf</code> is a null pointer) with the value <code>_IONBF</code> for <code>mode</code>.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=11" title="Edit section: The setvbuf function">edit</a>]</span> <span class="mw-headline" id="The_setvbuf_function">The <code>setvbuf</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int setvbuf(FILE *stream, char *buf, int mode, size_t size);
+</pre>
+<p>The <code>setvbuf</code> function may be used only after the stream pointed to by <code>stream</code> has been associated with an open file and before any other operation is performed on the stream. The argument <code>mode</code> determines how the stream will be buffered, as follows: <code>_IOFBF</code> causes input/output to be fully buffered; <code>_IOLBF</code> causes input/output to be line buffered; <code>_IONBF</code> causes input/output to be unbuffered. If <code>buf</code> is not a null pointer, the array it points to may be used instead of a buffer associated by the <code>setvbuf</code> function. (The buffer must have a lifetime at least as great as the open stream, so the stream should be closed before a buffer that has automatic storage duration is deallocated upon block exit.) The argument <code>size</code> specifies the size of the array. The contents of the array at any time are indeterminate.</p>
+<p>The <code>setvbuf</code> function returns zero on success, or nonzero if an invalid value is given for <code>mode</code> or if the request cannot be honored.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=12" title="Edit section: Functions that Modify the File Position Indicator">edit</a>]</span> <span class="mw-headline" id="Functions_that_Modify_the_File_Position_Indicator">Functions that Modify the File Position Indicator</span></h2>
+<p>The <code>stdio.h</code> library has five functions that affect the file position indicator besides those that do reading or writing: <code>fgetpos</code>, <code>fseek</code>, <code>fsetpos</code>, <code>ftell</code>, and <code>rewind</code>.</p>
+<p>The <code>fseek</code> and <code>ftell</code> functions are older than <code>fgetpos</code> and <code>fsetpos</code>.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=13" title="Edit section: The fgetpos and fsetpos functions">edit</a>]</span> <span class="mw-headline" id="The_fgetpos_and_fsetpos_functions">The <code>fgetpos</code> and <code>fsetpos</code> functions</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int fgetpos(FILE *stream, fpos_t *pos);
+int fsetpos(FILE *stream, const fpos_t *pos);
+</pre>
+<p>The <code>fgetpos</code> function stores the current value of the file position indicator for the stream pointed to by <code>stream</code> in the object pointed to by <code>pos</code>. The value stored contains unspecified information usable by the <code>fsetpos</code> function for repositioning the stream to its position at the time of the call to the <code>fgetpos</code> function.</p>
+<p>If successful, the <code>fgetpos</code> function returns zero; on failure, the <code>fgetpos</code> function returns nonzero and stores an implementation-defined positive value in <code>errno</code>.</p>
+<p>The <code>fsetpos</code> function sets the file position indicator for the stream pointed to by <code>stream</code> according to the value of the object pointed to by <code>pos</code>, which shall be a value obtained from an earlier call to the <code>fgetpos</code> function on the same stream.</p>
+<p>A successful call to the <code>fsetpos</code> function clears the end-of-file indicator for the stream and undoes any effects of the <code>ungetc</code> function on the same stream. After an <code>fsetpos</code> call, the next operation on an update stream may be either input or output.</p>
+<p>If successful, the <code>fsetpos</code> function returns zero; on failure, the <code>fsetpos</code> function returns nonzero and stores an implementation-defined positive value in <code>errno</code>.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=14" title="Edit section: The fseek and ftell functions">edit</a>]</span> <span class="mw-headline" id="The_fseek_and_ftell_functions">The <code>fseek</code> and <code>ftell</code> functions</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int fseek(FILE *stream, long int offset, int whence);
+long int ftell(FILE *stream);
+</pre>
+<p>The <code>fseek</code> function sets the file position indicator for the stream pointed to by <code>stream</code>.</p>
+<p>For a binary stream, the new position, measured in characters from the beginning of the file, is obtained by adding <code>offset</code> to the position specified by <code>whence</code>. Three macros in <code>stdio.h</code> called <code>SEEK_SET</code>, <code>SEEK_CUR</code>, and <code>SEEK_END</code> expand to unique values. If the position specified by <code>whence</code> is <code>SEEK_SET</code>, the specified position is the beginning of the file; if <code>whence</code> is <code>SEEK_END</code>, the specified position is the end of the file; and if <code>whence</code> is <code>SEEK_CUR</code>, the specified position is the current file position. A binary stream need not meaningfully support <code>fseek</code> calls with a <code>whence</code> value of <code>SEEK_END</code>.</p>
+<p>For a text stream, either <code>offset</code> shall be zero, or <code>offset</code> shall be a value returned by an earlier call to the <code>ftell</code> function on the same stream and <code>whence</code> shall be <code>SEEK_SET</code>.</p>
+<p>The <code>fseek</code> function returns nonzero only for a request that cannot be satisfied.</p>
+<p>The <code>ftell</code> function obtains the current value of the file position indicator for the stream pointed to by <code>stream</code>. For a binary stream, the value is the number of characters from the beginning of the file; for a text stream, its file position indicator contains unspecified information, usable by the <code>fseek</code> function for returning the file position indicator for the stream to its position at the time of the <code>ftell</code> call; the difference between two such return values is not necessarily a meaningful measure of the number of characters written or read.</p>
+<p>If successful, the <code>ftell</code> function returns the current value of the file position indicator for the stream. On failure, the <code>ftell</code> function returns <code>-1L</code> and stores an implementation-defined positive value in <code>errno</code>.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=15" title="Edit section: The rewind function">edit</a>]</span> <span class="mw-headline" id="The_rewind_function">The <code>rewind</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+void rewind(FILE *stream);
+</pre>
+<p>The <code>rewind</code> function sets the file position indicator for the stream pointed to by <code>stream</code> to the beginning of the file. It is equivalent to</p>
+<pre>
+(void)fseek(stream, 0L, SEEK_SET)
+</pre>
+<p>except that the error indicator for the stream is also cleared.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=16" title="Edit section: Error Handling Functions">edit</a>]</span> <span class="mw-headline" id="Error_Handling_Functions">Error Handling Functions</span></h2>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=17" title="Edit section: The clearerr function">edit</a>]</span> <span class="mw-headline" id="The_clearerr_function">The <code>clearerr</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+void clearerr(FILE *stream);
+</pre>
+<p>The <code>clearerr</code> function clears the end-of-file and error indicators for the stream pointed to by <code>stream</code>.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=18" title="Edit section: The feof function">edit</a>]</span> <span class="mw-headline" id="The_feof_function">The <code>feof</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int feof(FILE *stream);
+</pre>
+<p>The <code>feof</code> function tests the end-of-file indicator for the stream pointed to by <code>stream</code> and returns nonzero if and only if the end-of-file indicator is set for <code>stream</code>, otherwise it returns zero.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=19" title="Edit section: The ferror function">edit</a>]</span> <span class="mw-headline" id="The_ferror_function">The <code>ferror</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int ferror(FILE *stream);
+</pre>
+<p>The <code>ferror</code> function tests the error indicator for the stream pointed to by <code>stream</code> and returns nonzero if and only if the error indicator is set for <code>stream</code>, otherwise it returns zero.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=20" title="Edit section: The perror function">edit</a>]</span> <span class="mw-headline" id="The_perror_function">The <code>perror</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+void perror(const char *s);
+</pre>
+<p>The <code>perror</code> function maps the error number in the integer expression <code>errno</code> to an error message. It writes a sequence of characters to the standard error stream thus: first, if <code>s</code> is not a null pointer and the character pointed to by <code>s</code> is not the null character, the string pointed to by <code>s</code> followed by a colon (<tt>:</tt>) and a space; then an appropriate error message string followed by a new-line character. The contents of the error message are the same as those returned by the <code>strerror</code> function with the argument <code>errno</code>, which are implementation-defined.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=21" title="Edit section: Other Operations on Files">edit</a>]</span> <span class="mw-headline" id="Other_Operations_on_Files">Other Operations on Files</span></h2>
+<p>The <code>stdio.h</code> library has a variety of functions that do some operation on files besides reading and writing.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=22" title="Edit section: The remove function">edit</a>]</span> <span class="mw-headline" id="The_remove_function">The <code>remove</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int remove(const char *filename);
+</pre>
+<p>The <code>remove</code> function causes the file whose name is the string pointed to by <code>filename</code> to be no longer accessible by that name. A subsequent attempt to open that file using that name will fail, unless it is created anew. If the file is open, the behavior of the <code>remove</code> function is implementation-defined.</p>
+<p>The <code>remove</code> function returns zero if the operation succeeds, nonzero if it fails.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=23" title="Edit section: The rename function">edit</a>]</span> <span class="mw-headline" id="The_rename_function">The <code>rename</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int rename(const char *old_filename, const char *new_filename);
+</pre>
+<p>The <code>rename</code> function causes the file whose name is the string pointed to by <code>old_filename</code> to be henceforth known by the name given by the string pointed to by <code>new_filename</code>. The file named <code>old_filename</code> is no longer accessible by that name. If a file named by the string pointed to by <code>new_filename</code> exists prior to the call to the <code>rename</code> function, the behavior is implementation-defined.</p>
+<p>The <code>rename</code> function returns zero if the operation succeeds, nonzero if it fails, in which case if the file existed previously it is still known by its original name.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=24" title="Edit section: The tmpfile function">edit</a>]</span> <span class="mw-headline" id="The_tmpfile_function">The <code>tmpfile</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+FILE *tmpfile(void);
+</pre>
+<p>The <code>tmpfile</code> function creates a temporary binary file that will automatically be removed when it is closed or at program termination. If the program terminates abnormally, whether an open temporary file is removed is implementation-defined. The file is opened for update with <code>"wb+"</code> mode.</p>
+<p>The <code>tmpfile</code> function returns a pointer to the stream of the file that it created. If the file cannot be created, the <code>tmpfile</code> function returns a null pointer.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=25" title="Edit section: The tmpnam function">edit</a>]</span> <span class="mw-headline" id="The_tmpnam_function">The <code>tmpnam</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+char *tmpnam(char *s);
+</pre>
+<p>The <code>tmpnam</code> function generates a string that is a valid file name and that is not the name of an existing file.</p>
+<p>The <code>tmpnam</code> function generates a different string each time it is called, up to <code>TMP_MAX</code> times. (<code>TMP_MAX</code> is a macro defined in <code>stdio.h</code>.) If it is called more than <code>TMP_MAX</code> times, the behavior is implementation-defined.</p>
+<p>The implementation shall behave as if no library function calls the <code>tmpnam</code> function.</p>
+<p>If the argument is a null pointer, the <code>tmpnam</code> function leaves its result in an internal static object and returns a pointer to that object. Subsequent calls to the <code>tmpnam</code> function may modify the same object. If the argument is not a null pointer, it is assumed to point to an array of at least <code>L_tmpnam</code> characters (<code>L_tmpnam</code> is another macro in <code>stdio.h</code>); the <code>tmpnam</code> function writes its result in that array and returns the argument as its value.</p>
+<p>The value of the macro <code>TMP_MAX</code> must be at least 25.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=26" title="Edit section: Reading from Files">edit</a>]</span> <span class="mw-headline" id="Reading_from_Files">Reading from Files</span></h2>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=27" title="Edit section: Character Input Functions">edit</a>]</span> <span class="mw-headline" id="Character_Input_Functions">Character Input Functions</span></h3>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=28" title="Edit section: The fgetc function">edit</a>]</span> <span class="mw-headline" id="The_fgetc_function">The <code>fgetc</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+int fgetc(FILE *stream);
+</pre>
+<p>The <code>fgetc</code> function obtains the next character (if present) as an <code>unsigned char</code> converted to an <code>int</code>, from the input stream pointed to by <code>stream</code>, and advances the associated file position indicator for the stream (if defined).</p>
+<p>The <code>fgetc</code> function returns the next character from the input stream pointed to by <code>stream</code>. If the stream is at end-of-file, the end-of-file indicator for the stream is set and <code>fgetc</code> returns <code>EOF</code> (<code>EOF</code> is a negative value defined in <code>&lt;stdio.h&gt;</code>, usually <code>(-1)</code>). If a read error occurs, the error indicator for the stream is set and <code>fgetc</code> returns <code>EOF</code>.</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=29" title="Edit section: The fgets function">edit</a>]</span> <span class="mw-headline" id="The_fgets_function">The <code>fgets</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+char *fgets(char *s, int n, FILE *stream);
+</pre>
+<p>The <code>fgets</code> function reads at most one less than the number of characters specified by <code>n</code> from the stream pointed to by <code>stream</code> into the array pointed to by <code>s</code>. No additional characters are read after a new-line character (which is retained) or after end-of-file. A null character is written immediately after the last character read into the array.</p>
+<p>The <code>fgets</code> function returns <code>s</code> if successful. If end-of-file is encountered and no characters have been read into the array, the contents of the array remain unchanged and a null pointer is returned. If a read error occurs during the operation, the array contents are indeterminate and a null pointer is returned.</p>
+<p>Warning: Different operating systems may use different character sequences to represent the end-of-line sequence. For example, some filesystems use the terminator <code>\r\n</code> in text files; <code>fgets</code> may read those lines, removing the <code>\n</code> but keeping the <code>\r</code> as the last character of <code>s</code>. This expurious character should be removed in the string <code>s</code> before the string is used for anything (unless the programmer doesn't care about it). Unixes typically use <code>\n</code> as its end-of-line sequence, MS-DOS and Windows uses <code>\r\n</code>, and Mac OSes used <code>\r</code> before OS X.</p>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="c source-c">
+<pre class="de1">
+ <span class="coMULTI">/* A example program that reads from stdin and writes to stdout */</span>
+ <span class="co2">#include &lt;stdio.h&gt;</span>
+ 
+ <span class="co2">#define BUFFER_SIZE 100</span>
+ 
+ <span class="kw4">int</span> main<span class="br0">(</span><span class="kw4">void</span><span class="br0">)</span>
+ <span class="br0">{</span>
+     <span class="kw4">char</span> buffer<span class="br0">[</span>BUFFER_SIZE<span class="br0">]</span><span class="sy0">;</span> <span class="coMULTI">/* a read buffer */</span>
+     <span class="kw1">while</span><span class="br0">(</span> <span class="kw3">fgets</span> <span class="br0">(</span>buffer<span class="sy0">,</span> BUFFER_SIZE<span class="sy0">,</span> stdin<span class="br0">)</span> <span class="sy0">!=</span> NULL<span class="br0">)</span>
+     <span class="br0">{</span>
+          <span class="kw3">printf</span><span class="br0">(</span><span class="st0">"%s"</span><span class="sy0">,</span>buffer<span class="br0">)</span><span class="sy0">;</span>
+     <span class="br0">}</span>
+     <span class="kw1">return</span> <span class="nu0">0</span><span class="sy0">;</span>
+ <span class="br0">}</span>
+ <span class="coMULTI">/* end program. */</span>
+</pre></div>
+</div>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=30" title="Edit section: The getc function">edit</a>]</span> <span class="mw-headline" id="The_getc_function">The <code>getc</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+int getc(FILE *stream);
+</pre>
+<p>The <code>getc</code> function is equivalent to <code>fgetc</code>, except that it may be implemented as a macro. If it is implemented as a macro, the <code>stream</code> argument may be evaluated more than once, so the argument should never be an expression with side effects (i.e. have an assignment, increment, or decrement operators, or be a function call).</p>
+<p>The <code>getc</code> function returns the next character from the input stream pointed to by <code>stream</code>. If the stream is at end-of-file, the end-of-file indicator for the stream is set and <code>getc</code> returns <code>EOF</code> (<code>EOF</code> is a negative value defined in <code>&lt;stdio.h&gt;</code>, usually <code>(-1)</code>). If a read error occurs, the error indicator for the stream is set and <code>getc</code> returns <code>EOF</code>.</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=31" title="Edit section: The getchar function">edit</a>]</span> <span class="mw-headline" id="The_getchar_function">The <code>getchar</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+int getchar(void);
+</pre>
+<p>The <code>getchar</code> function is equivalent to <code>getc</code> with the argument <code>stdin</code>.</p>
+<p>The <code>getchar</code> function returns the next character from the input stream pointed to by <code>stdin</code>. If <code>stdin</code> is at end-of-file, the end-of-file indicator for <code>stdin</code> is set and <code>getchar</code> returns <code>EOF</code> (<code>EOF</code> is a negative value defined in <code>&lt;stdio.h&gt;</code>, usually <code>(-1)</code>). If a read error occurs, the error indicator for <code>stdin</code> is set and <code>getchar</code> returns <code>EOF</code>.</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=32" title="Edit section: The gets function">edit</a>]</span> <span class="mw-headline" id="The_gets_function">The <code>gets</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+char *gets(char *s);
+</pre>
+<p>The <code>gets</code> function reads characters from the input stream pointed to by <code>stdin</code> into the array pointed to by <code>s</code> until an end-of-file is encountered or a new-line character is read. Any new-line character is discarded, and a null character is written immediately after the last character read into the array.</p>
+<p>The <code>gets</code> function returns <code>s</code> if successful. If the end-of-file is encountered and no characters have been read into the array, the contents of the array remain unchanged and a null pointer is returned. If a read error occurs during the operation, the array contents are indeterminate and a null pointer is returned.</p>
+<p>This function and description is only included here for completeness. Most C programmers nowadays shy away from using <code>gets</code>, as there is no way for the function to know how big the buffer is that the programmer wants to read into. Commandment #5 of <a href="//en.wikipedia.org/wiki/Henry_Spencer" class="extiw" title="w:Henry Spencer">Henry Spencer</a>'s <i>The Ten Commandments for C Programmers (Annotated Edition)</i> reads, "Thou shalt check the array bounds of all strings (indeed, all arrays), for surely where thou typest <i>foo</i> someone someday shall type <i>supercalifragilisticexpialidocious</i>." It mentions <code>gets</code> in the annotation: "As demonstrated by the deeds of the Great Worm, a consequence of this commandment is that robust production software should never make use of <code>gets()</code>, for it is truly a tool of the Devil. Thy interfaces should always inform thy servants of the bounds of thy arrays, and servants who spurn such advice or quietly fail to follow it should be dispatched forthwith to the Land Of Rm, where they can do no further harm to thee."</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=33" title="Edit section: The ungetc function">edit</a>]</span> <span class="mw-headline" id="The_ungetc_function">The <code>ungetc</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+int ungetc(int c, FILE *stream);
+</pre>
+<p>The <code>ungetc</code> function pushes the character specified by <code>c</code> (converted to an <code>unsigned char</code>) back onto the input stream pointed to by stream. The pushed-back characters will be returned by subsequent reads on that stream in the reverse order of their pushing. A successful intervening call (with the stream pointed to by <code>stream</code>) to a file-positioning function (<code>fseek</code>, <code>fsetpos</code>, or <code>rewind</code>) discards any pushed-back characters for the stream. The external storage corresponding to the stream is unchanged.</p>
+<p>One character of pushback is guaranteed. If the <code>ungetc</code> function is called too many times on the same stream without an intervening read or file positioning operation on that stream, the operation may fail.</p>
+<p>If the value of <code>c</code> equals that of the macro <code>EOF</code>, the operation fails and the input stream is unchanged.</p>
+<p>A successful call to the <code>ungetc</code> function clears the end-of-file indicator for the stream. The value of the file position indicator for the stream after reading or discarding all pushed-back characters shall be the same as it was before the characters were pushed back. For a text stream, the value of its file-position indicator after a successful call to the <code>ungetc</code> function is unspecified until all pushed-back characters are read or discarded. For a binary stream, its file position indicator is decremented by each successful call to the <code>ungetc</code> function; if its value was zero before a call, it is indeterminate after the call.</p>
+<p>The <code>ungetc</code> function returns the character pushed back after conversion, or <code>EOF</code> if the operation fails.</p>
+<p><br /></p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=34" title="Edit section: EOF pitfall">edit</a>]</span> <span class="mw-headline" id="EOF_pitfall">EOF pitfall</span></h3>
+<p>A mistake when using <code>fgetc</code>, <code>getc</code>, or <code>getchar</code> is to assign the result to a variable of type <code>char</code> <i>before</i> comparing it to <code>EOF</code>. The following code fragments exhibit this mistake, and then show the correct approach (using type int):</p>
+<center>
+<table width="80%" style="margin-left: auto; margin-right: auto;">
+<tr>
+<th>Mistake</th>
+<th>Correction</th>
+</tr>
+<tr>
+<td>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="c source-c">
+<pre class="de1">
+<span class="kw4">char</span> c<span class="sy0">;</span>
+<span class="kw1">while</span> <span class="br0">(</span><span class="br0">(</span>c <span class="sy0">=</span> <span class="kw3">getchar</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="sy0">!=</span> EOF<span class="br0">)</span>
+    <span class="kw3">putchar</span><span class="br0">(</span>c<span class="br0">)</span><span class="sy0">;</span>
+</pre></div>
+</div>
+</td>
+<td>
+<div dir="ltr" class="mw-geshi mw-code mw-content-ltr">
+<div class="c source-c">
+<pre class="de1">
+<span class="kw4">int</span> c<span class="sy0">;</span>
+<span class="kw1">while</span> <span class="br0">(</span><span class="br0">(</span>c <span class="sy0">=</span> <span class="kw3">getchar</span><span class="br0">(</span><span class="br0">)</span><span class="br0">)</span> <span class="sy0">!=</span> EOF<span class="br0">)</span>
+    <span class="kw3">putchar</span><span class="br0">(</span>c<span class="br0">)</span><span class="sy0">;</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</table>
+</center>
+<p>Consider a system in which the type <code>char</code> is 8&#160;bits wide, representing 256&#160;different values. <code>getchar</code> may return any of the 256&#160;possible characters, and it also may return <code>EOF</code> to indicate <a href="/w/index.php?title=End-of-file&amp;action=edit&amp;redlink=1" class="new" title="End-of-file (does not exist)">end-of-file</a>, for a total of 257 different possible return values.</p>
+<p>When <code>getchar</code>'s result is assigned to a <code>char</code>, which can represent only 256 different values, there is necessarily some loss of information—when packing 257&#160;items into 256&#160;slots, there <a href="/w/index.php?title=Pigeonhole_principle&amp;action=edit&amp;redlink=1" class="new" title="Pigeonhole principle (does not exist)">must be a collision</a>. The <code>EOF</code> value, when converted to <code>char</code>, becomes indistinguishable from whichever one of the 256 characters shares its numerical value. If that character is found in the file, the above example may mistake it for an end-of-file indicator; or, just as bad, if type <code>char</code> is unsigned, then because <code>EOF</code> is negative, it can never be equal to any unsigned <code>char</code>, so the above example will not terminate at end-of-file. It will loop forever, repeatedly printing the character which results from converting <code>EOF</code> to <code>char</code>.</p>
+<p>However, this looping failure mode does not occur if the char definition is signed (C makes the signedness of the default char type implementation-dependent),<sup id="cite_ref-0" class="reference"><a href="#cite_note-0">[1]</a></sup> assuming the commonly used <a href="/w/index.php?title=End-of-file&amp;action=edit&amp;redlink=1" class="new" title="End-of-file (does not exist)"><code>EOF</code> value of -1</a>. However, the fundamental issue remains that if the <code>EOF</code> value is defined outside of the range of the <code>char</code> type, when assigned to a <code>char</code> that value is sliced and will no longer match the full <code>EOF</code> value necessary to exit the loop. On the other hand, if <code>EOF</code> is within range of <code>char</code>, this guarantees a collision between <code>EOF</code> and a char value. Thus, regardless of how system types are defined, never use <code>char</code> types when testing against <code>EOF</code>.</p>
+<p>On systems where <code>int</code> and <code>char</code> are the same size (i.e., systems incompatible with minimally the POSIX and C99 standards), even the "good" example will suffer from the indistinguishability of <code>EOF</code> and some character's value. The proper way to handle this situation is to check <code><a href="/w/index.php?title=Feof&amp;action=edit&amp;redlink=1" class="new" title="Feof (does not exist)">feof</a></code> and <code><a href="/w/index.php?title=Ferror&amp;action=edit&amp;redlink=1" class="new" title="Ferror (does not exist)">ferror</a></code> after <code>getchar</code> returns <code>EOF</code>. If <code>feof</code> indicates that end-of-file has not been reached, and <code>ferror</code> indicates that no errors have occurred, then the <code>EOF</code> returned by <code>getchar</code> can be assumed to represent an actual character. These extra checks are rarely done, because most programmers assume that their code will never need to run on one of these "big <code>char</code>" systems. Another way is to use a compile-time assertion to make sure that <code>UINT_MAX &gt; UCHAR_MAX</code>, which at least prevents a program with such an assumption from compiling in such a system.</p>
+<p><br /></p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=35" title="Edit section: Direct input function: the fread function">edit</a>]</span> <span class="mw-headline" id="Direct_input_function:_the_fread_function">Direct input function: the <code>fread</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+</pre>
+<p>The <code>fread</code> function reads, into the array pointed to by <code>ptr</code>, up to <code>nmemb</code> elements whose size is specified by <code>size</code>, from the stream pointed to by <code>stream</code>. The file position indicator for the stream (if defined) is advanced by the number of characters successfully read. If an error occurs, the resulting value of the file position indicator for the stream is indeterminate. If a partial element is read, its value is indeterminate.</p>
+<p>The <code>fread</code> function returns the number of elements successfully read, which may be less than <code>nmemb</code> if a read error or end-of-file is encountered. If <code>size</code> or <code>nmemb</code> is zero, <code>fread</code> returns zero and the contents of the array and the state of the stream remain unchanged.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=36" title="Edit section: Formatted input functions: the scanf family of functions">edit</a>]</span> <span class="mw-headline" id="Formatted_input_functions:_the_scanf_family_of_functions">Formatted input functions: the <code>scanf</code> family of functions</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+int fscanf(FILE *stream, const char *format, ...);
+int scanf(const char *format, ...);
+int sscanf(const char *s, const char *format, ...);
+</pre>
+<p>The <code>fscanf</code> function reads input from the stream pointed to by <code>stream</code>, under control of the string pointed to by <code>format</code> that specifies the admissible sequences and how they are to be converted for assignment, using subsequent arguments as pointers to the objects to receive converted input. If there are insufficient arguments for the format, the behavior is undefined. If the format is exhausted while arguments remain, the excess arguments are evaluated (as always) but are otherwise ignored.</p>
+<p>The format shall be a multibyte character sequence, beginning and ending in its initial shift state. The format is composed of zero or more directives: one or more white-space characters; an ordinary multibyte character (neither <tt>%</tt> or a white-space character); or a conversion specification. Each conversion specification is introduced by the character <tt>%</tt>. After the <tt>%</tt>, the following appear in sequence:</p>
+<ul>
+<li>An optional assignment-suppressing character <tt>*</tt>.</li>
+<li>An optional nonzero decimal integer that specifies the maximum field width.</li>
+<li>An optional <tt>h</tt>, <tt>l</tt> (ell) or <tt>L</tt> indicating the size of the receiving object. The conversion specifiers <tt>d</tt>, <tt>i</tt>, and <tt>n</tt> shall be preceded by <tt>h</tt> if the corresponding argument is a pointer to <code>short int</code> rather than a pointer to <code>int</code>, or by <tt>l</tt> if it is a pointer to <code>long int</code>. Similarly, the conversion specifiers <tt>o</tt>, <tt>u</tt>, and <tt>x</tt> shall be preceded by <tt>h</tt> if the corresponding argument is a pointer to <code>unsigned short int</code> rather than <code>unsigned int</code>, or by <tt>l</tt> if it is a pointer to <code>unsigned long int</code>. Finally, the conversion specifiers <tt>e</tt>, <tt>f</tt>, and <tt>g</tt> shall be preceded by <tt>l</tt> if the corresponding argument is a pointer to <code>double</code> rather than a pointer to <code>float</code>, or by <tt>L</tt> if it is a pointer to <code>long double</code>. If an <tt>h</tt>, <tt>l</tt>, or <tt>L</tt> appears with any other format specifier, the behavior is undefined.</li>
+<li>A character that specifies the type of conversion to be applied. The valid conversion specifiers are described below.</li>
+</ul>
+<p>The <code>fscanf</code> function executes each directive of the format in turn. If a directive fails, as detailed below, the <code>fscanf</code> function returns. Failures are described as input failures (due to the unavailability of input characters) or matching failures (due to inappropriate input).</p>
+<p>A directive composed of white-space character(s) is executed by reading input up to the first non-white-space character (which remains unread) or until no more characters remain unread.</p>
+<p>A directive that is an ordinary multibyte character is executed by reading the next characters of the stream. If one of the characters differs from one comprising the directive, the directive fails, and the differing and subsequent characters remain unread.</p>
+<p>A directive that is a conversion specification defines a set of matching input sequences, as described below for each specifier. A conversion specification is executed in the following steps:</p>
+<p>Input white-space characters (as specified by the <code>isspace</code> function) are skipped, unless the specification includes a <tt>[</tt>, <tt>c</tt>, or <tt>n</tt> specifier. (The white-space characters are not counted against the specified field width.)</p>
+<p>An input item is read from the stream, unless the specification includes an <tt>n</tt> specifier. An input item is defined as the longest matching sequences of input characters, unless that exceeds a specified field width, in which case it is the initial subsequence of that length in the sequence. The first character, if any, after the input item remains unread. If the length of the input item is zero, the execution of the directive fails; this condition is a matching failure, unless an error prevented input from the stream, in which case it is an input failure.</p>
+<p>Except in the case of a <tt>%</tt> specifier, the input item (or, in the case of a <tt>%n</tt> directive, the count of input characters) is converted to a type appropriate to the conversion specifier. If the input item is not a matching sequence, the execution of the directive fails; this condition is a matching failure. Unless assignment suppression was indicated by a <tt>*</tt>, the result of the conversion is placed in the object pointed to by the first argument following the <code>format</code> argument that has not already received a conversion result. If this object does not have an appropriate type, or if the result of the conversion cannot be represented in the space provided, the behavior is undefined.</p>
+<p>The following conversion specifiers are valid:</p>
+<dl>
+<dt><tt>d</tt>&#160;</dt>
+<dd>Matches an optionally signed decimal integer, whose format is the same as expected for the subject sequence of the <code>strtol</code> function with the value 10 for the <code>base</code> argument. The corresponding argument shall be a pointer to integer.</dd>
+</dl>
+<dl>
+<dt><tt>i</tt>&#160;</dt>
+<dd>Matches an optionally signed integer, whose format is the same as expected for the subject sequence of the <code>strtol</code> function with the value 0 for the <code>base</code> argument. The corresponding argument shall be a pointer to integer.</dd>
+</dl>
+<dl>
+<dt><tt>o</tt>&#160;</dt>
+<dd>Matches an optionally signed octal integer, whose format is the same as expected for the subject sequence of the <code>strtoul</code> function with the value 8 for the <code>base</code> argument. The corresponding argument shall be a pointer to unsigned integer.</dd>
+</dl>
+<dl>
+<dt><tt>u</tt>&#160;</dt>
+<dd>Matches an optionally signed decimal integer, whose format is the same as expected for the subject sequence of the <code>strtoul</code> function with the value 10 for the <code>base</code> argument. The corresponding argument shall be a pointer to unsigned integer.</dd>
+</dl>
+<dl>
+<dt><tt>x</tt>&#160;</dt>
+<dd>Matches an optionally signed hexadecimal integer, whose format is the same as expected for the subject sequence of the <code>strtoul</code> function with the value 16 for the <code>base</code> argument. The corresponding argument shall be a pointer to unsigned integer.</dd>
+</dl>
+<dl>
+<dt><tt>e</tt>, <tt>f</tt>, <tt>g</tt>&#160;</dt>
+<dd>Matches an optionally signed floating-point number, whose format is the same as expected for the subject string of the <code>strtod</code> function. The corresponding argument will be a pointer to floating.</dd>
+</dl>
+<dl>
+<dt><tt>s</tt>&#160;</dt>
+<dd>Matches a sequence of non-white-space characters. (No special provisions are made for multibyte characters.) The corresponding argument shall be a pointer to the initial character of an array large enough to accept the sequence and a terminating null character, which will be added automatically.</dd>
+</dl>
+<dl>
+<dt><tt>[</tt>&#160;</dt>
+<dd>Matches a nonempty sequence of characters (no special provisions are made for multibyte characters) from a set of expected characters (the <i>scanset</i>). The corresponding argument shall be a pointer to the initial character of an array large enough to accept the sequence and a terminating null character, which will be added automatically. The conversion specifier includes all subsequent characters in the <code>format</code> string, up to and including the matching right bracket (<tt>]</tt>). The characters between the brackets (the <i>scanlist</i>) comprise the scanset, unless the character after the left bracket is a circumflex (<tt>^</tt>), in which case the scanset contains all the characters that do not appear in the scanlist between the circumflex and the right bracket. If the conversion specifier begins with <tt>[]</tt> or <tt>[^]</tt>, the right-bracket character is in the scanlist and the next right bracket character is the matching right bracket that ends the specification; otherwise, the first right bracket character is the one that ends the specification. If a <tt>-</tt> character is in the scanlist and is not the first, nor the second where the first character is a <tt>^</tt>, nor the last character, the behavior is implementation-defined.</dd>
+</dl>
+<dl>
+<dt><tt>c</tt>&#160;</dt>
+<dd>Matches a sequence of characters (no special provisions are made for multibyte characters) of the number specified by the field width (1 if no field width is present in the directive). The corresponding argument shall be a pointer to the initial character of an array large enough to accept the sequence. No null character is added.</dd>
+</dl>
+<dl>
+<dt><tt>p</tt>&#160;</dt>
+<dd>Matches an implementation-defined set of sequences, which should be the same as the set of sequences that may be produced by the <tt>%p</tt> conversion of the <code>fprintf</code> function. The corresponding argument shall be a pointer to <code>void</code>. The interpretation of the input then is implementation-defined. If the input item is a value converted earlier during the same program execution, the pointer that results shall compare equal to that value; otherwise the behavior of the <tt>%p</tt> conversion is undefined.</dd>
+</dl>
+<dl>
+<dt><tt>n</tt>&#160;</dt>
+<dd>No input is consumed. The corresponding argument shall be a pointer to integer into which is to be written the number of characters read from the input stream so far by this call to the <code>fscanf</code> function. Execution of a <tt>%n</tt> directive does not increment the assignment count returned at the completion of execution of the <code>fscanf</code> function.</dd>
+</dl>
+<dl>
+<dt><tt>%</tt>&#160;</dt>
+<dd>Matches a single <tt>%</tt>; no conversion or assignment occurs. The complete conversion specification shall be <tt>%%</tt>.</dd>
+</dl>
+<p>If a conversion specification is invalid, the behavior is undefined.</p>
+<p>The conversion specifiers <tt>E</tt>, <tt>G</tt>, and <tt>X</tt> are also valid and behave the same as, respectively, <tt>e</tt>, <tt>g</tt>, and <tt>x</tt>.</p>
+<p>If end-of-file is encountered during input, conversion is terminated. If end-of-file occurs before any characters matching the current directive have been read (other than leading white space, where permitted), execution of the current directive terminates with an input failure; otherwise, unless execution of the current directive is terminated with a matching failure, execution of the following directive (if any) is terminated with an input failure.</p>
+<p>If conversion terminates on a conflicting input character, the offending input character is left unread in the input stream. Trailing white space (including new-line characters) is left unread unless matched by a directive. The success of literal matches and suppressed assignments is not directly determinable other than via the <tt>%n</tt> directive.</p>
+<p>The <code>fscanf</code> function returns the value of the macro <code>EOF</code> if an input failure occurs before any conversion. Otherwise, the <code>fscanf</code> function returns the number of input items assigned, which can be fewer than provided for, or even zero, in the event of an early matching failure.</p>
+<p>The <code>scanf</code> function is equivalent to <code>fscanf</code> with the argument <code>stdin</code> interposed before the arguments to <code>scanf</code>. Its return value is similar to that of <code>fscanf</code>.</p>
+<p>The <code>sscanf</code> function is equivalent to <code>fscanf</code>, except that the argument <code>s</code> specifies a string from which the input is to be obtained, rather than from a stream. Reaching the end of the string is equivalent to encountering the end-of-file for the <code>fscanf</code> function. If copying takes place between objects that overlap, the behavior is undefined.</p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=37" title="Edit section: Writing to Files">edit</a>]</span> <span class="mw-headline" id="Writing_to_Files">Writing to Files</span></h2>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=38" title="Edit section: Character Output Functions">edit</a>]</span> <span class="mw-headline" id="Character_Output_Functions">Character Output Functions</span></h3>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=39" title="Edit section: The fputc function">edit</a>]</span> <span class="mw-headline" id="The_fputc_function">The <code>fputc</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+int fputc(int c, FILE *stream);
+</pre>
+<p>The <code>fputc</code> function writes the character specified by <code>c</code> (converted to an <code>unsigned char</code>) to the stream pointed to by <code>stream</code> at the position indicated by the associated file position indicator (if defined), and advances the indicator appropriately. If the file cannot support positioning requests, or if the stream is opened with append mode, the character is appended to the output stream. The function returns the character written, unless a write error occurs, in which case the error indicator for the stream is set and <code>fputc</code> returns <code>EOF</code>.</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=40" title="Edit section: The fputs function">edit</a>]</span> <span class="mw-headline" id="The_fputs_function">The <code>fputs</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+int fputs(const char *s, FILE *stream);
+</pre>
+<p>The <code>fputs</code> function writes the string pointed to by <code>s</code> to the stream pointed to by <code>stream</code>. The terminating null character is not written. The function returns <code>EOF</code> if a write error occurs, otherwise it returns a nonnegative value.</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=41" title="Edit section: The putc function">edit</a>]</span> <span class="mw-headline" id="The_putc_function">The <code>putc</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+int putc(int c, FILE *stream);
+</pre>
+<p>The <code>putc</code> function is equivalent to <code>fputc</code>, except that if it is implemented as a macro, it may evaluate <code>stream</code> more than once, so the argument should never be an expression with side effects. The function returns the character written, unless a write error occurs, in which case the error indicator for the stream is set and the function returns <code>EOF</code>.</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=42" title="Edit section: The putchar function">edit</a>]</span> <span class="mw-headline" id="The_putchar_function">The <code>putchar</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+int putchar(int c);
+</pre>
+<p>The <code>putchar</code> function is equivalent to <code>putc</code> with the second argument <code>stdout</code>. It returns the character written, unless a write error occurs, in which case the error indicator for <code>stdout</code> is set and the function returns <code>EOF</code>.</p>
+<h4><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=43" title="Edit section: The puts function">edit</a>]</span> <span class="mw-headline" id="The_puts_function">The <code>puts</code> function</span></h4>
+<pre>
+#include &lt;stdio.h&gt;
+int puts(const char *s);
+</pre>
+<p>The <code>puts</code> function writes the string pointed to by <code>s</code> to the stream pointed to by <code>stdout</code>, and appends a new-line character to the output. The terminating null character is not written. The function returns <code>EOF</code> if a write error occurs; otherwise, it returns a nonnegative value.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=44" title="Edit section: Direct output function: the fwrite function">edit</a>]</span> <span class="mw-headline" id="Direct_output_function:_the_fwrite_function">Direct output function: the <code>fwrite</code> function</span></h3>
+<pre>
+#include &lt;stdio.h&gt;
+size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
+</pre>
+<p>The <code>fwrite</code> function writes, from the array pointed to by <code>ptr</code>, up to <code>nmemb</code> elements whose size is specified by <code>size</code> to the stream pointed to by <code>stream</code>. The file position indicator for the stream (if defined) is advanced by the number of characters successfully written. If an error occurs, the resulting value of the file position indicator for the stream is indeterminate. The function returns the number of elements successfully written, which will be less than <code>nmemb</code> only if a write error is encountered.</p>
+<h3><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=45" title="Edit section: Formatted output functions: the printf family of functions">edit</a>]</span> <span class="mw-headline" id="Formatted_output_functions:_the_printf_family_of_functions">Formatted output functions: the <code>printf</code> family of functions</span></h3>
+<pre>
+#include &lt;stdarg.h&gt;
+#include &lt;stdio.h&gt;
+int fprintf(FILE *stream, const char *format, ...);
+int printf(const char *format, ...);
+int sprintf(char *s, const char *format, ...);
+int vfprintf(FILE *stream, const char *format, va_list arg);
+int vprintf(const char *format, va_list arg);
+int vsprintf(char *s, const char *format, va_list arg);
+</pre>
+<p><i>Note: Some length specifiers and format specifiers are new in C99. These may not be available in older compilers and versions of the stdio library, which adhere to the C89/C90 standard. Wherever possible, the new ones will be marked with (C99).</i></p>
+<p>The <code>fprintf</code> function writes output to the stream pointed to by <code>stream</code> under control of the string pointed to by <code>format</code> that specifies how subsequent arguments are converted for output. If there are insufficient arguments for the format, the behavior is undefined. If the format is exhausted while arguments remain, the excess arguments are evaluated (as always) but are otherwise ignored. The <code>fprintf</code> function returns when the end of the format string is encountered.</p>
+<p>The format shall be a multibyte character sequence, beginning and ending in its initial shift state. The format is composed of zero or more directives: ordinary multibyte characters (not <tt>%</tt>), which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or more subsequent arguments, converting them, if applicable, according to the corresponding conversion specifier, and then writing the result to the output stream.</p>
+<p>Each conversion specification is introduced by the character <tt>%</tt>. After the <tt>%</tt>, the following appear in sequence:</p>
+<ul>
+<li>Zero or more flags (in any order) that modify the meaning of the conversion specification.</li>
+<li>An optional minimum field width. If the converted value has fewer characters than the field width, it is padded with spaces (by default) on the left (or right, if the left adjustment flag, described later, has been given) to the field width. The field width takes the form of an asterisk <tt>*</tt> (described later) or a decimal integer. (Note that 0 is taken as a flag, not as the beginning of a field width.)</li>
+<li>An optional precision that gives the minimum number of digits to appear for the <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, and <tt>X</tt> conversions, the number of digits to appear after the decimal-point character for <tt>a</tt>, <tt>A</tt>, <tt>e</tt>, <tt>E</tt>, <tt>f</tt>, and <tt>F</tt> conversions, the maximum number of significant digits for the <tt>g</tt> and <tt>G</tt> conversions, or the maximum number of characters to be written from a string in <tt>s</tt> conversions. The precision takes the form of a period (<tt>.</tt>) followed either by an asterisk <tt>*</tt> (described later) or by an optional decimal integer; if only the period is specified, the precision is taken as zero. If a precision appears with any other conversion specifier, the behavior is undefined. Floating-point numbers are <i>rounded</i> to fit the precision; i.e. <tt>printf("%1.1f\n", 1.19);</tt> produces <tt>1.2</tt>.</li>
+<li>An optional length modifier that specifies the size of the argument.</li>
+<li>A conversion specifier character that specifies the type of conversion to be applied.</li>
+</ul>
+<p>As noted above, a field width, or precision, or both, may be indicated by an asterisk. In this case, an <code>int</code> argument supplies the field width or precision. The arguments specifying field width, or precision, or both, shall appear (in that order) before the argument (if any) to be converted. A negative field width argument is taken as a <tt>-</tt> flag followed by a positive field width. A negative precision argument is taken as if the precision were omitted.</p>
+<p>The flag characters and their meanings are:</p>
+<dl>
+<dt><tt>-</tt>&#160;</dt>
+<dd>The result of the conversion is left-justified within the field. (It is right-justified if this flag is not specified.)</dd>
+<dt><tt>+</tt>&#160;</dt>
+<dd>The result of a signed conversion always begins with a plus or minus sign. (It begins with a sign only when a negative value is converted if this flag is not specified. The results of all floating conversions of a negative zero, and of negative values that round to zero, include a minus sign.)</dd>
+<dt><i>space</i>&#160;</dt>
+<dd>If the first character of a signed conversion is not a sign, or if a signed conversion results in no characters, a space is prefixed to the result. If the space and <tt>+</tt> flags both appear, the space flag is ignored.</dd>
+<dt><tt>#</tt>&#160;</dt>
+<dd>The result is converted to an "alternative form". For <tt>o</tt> conversion, it increases the precision, if and only if necessary, to force the first digit of the result to be a zero (if the value and precision are both 0, a single 0 is printed). For <tt>x</tt> (or <tt>X</tt>) conversion, a nonzero result has <tt>0x</tt> (or <tt>0X</tt>) prefixed to it. For <tt>a</tt>, <tt>A</tt>, <tt>e</tt>, <tt>E</tt>, <tt>f</tt>, <tt>F</tt>, <tt>g</tt>, and <tt>G</tt> conversions, the result always contains a decimal-point character, even if no digits follow it. (Normally, a decimal-point character appears in the result of these conversions only if a digit follows it.) For <tt>g</tt> and <tt>G</tt> conversions, trailing zeros are not removed from the result. For other conversions, the behavior is undefined.</dd>
+<dt><tt>0</tt>&#160;</dt>
+<dd>For <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, <tt>X</tt>, <tt>a</tt>, <tt>A</tt>, <tt>e</tt>, <tt>E</tt>, <tt>f</tt>, <tt>F</tt>, <tt>g</tt>, and <tt>G</tt> conversions, leading zeros (following any indication of sign or base) are used to pad to the field width; no space padding is performed. If the <tt>0</tt> and <tt>-</tt> flags both appear, the <tt>0</tt> flag is ignored. For <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, and <tt>X</tt> conversions, if a precision is specified, the <tt>0</tt> flag is ignored. For other conversions, the behavior is undefined.</dd>
+</dl>
+<p>The length modifiers and their meanings are:</p>
+<dl>
+<dt><tt>hh</tt>&#160;</dt>
+<dd>(C99) Specifies that a following <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, or <tt>X</tt> conversion specifier applies to a <code>signed char</code> or <code>unsigned char</code> argument (the argument will have been promoted according to the integer promotions, but its value shall be converted to <code>signed char</code> or <code>unsigned char</code> before printing); or that a following <tt>n</tt> conversion specifier applies to a pointer to a <code>signed char</code> argument.</dd>
+</dl>
+<dl>
+<dt><tt>h</tt>&#160;</dt>
+<dd>Specifies that a following <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, or <tt>X</tt> conversion specifier applies to a <code>short int</code> or <code>unsigned short int</code> argument (the argument will have been promoted according to the integer promotions, but its value shall be converted to <code>short int</code> or <code>unsigned short int</code> before printing); or that a following <tt>n</tt> conversion specifier applies to a pointer to a <code>short int</code> argument.</dd>
+</dl>
+<dl>
+<dt><tt>l</tt> (ell)&#160;</dt>
+<dd>Specifies that a following <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, or <tt>X</tt> conversion specifier applies to a <code>long int</code> or <code>unsigned long int</code> argument; that a following <tt>n</tt> conversion specifier applies to a pointer to a <code>long int</code> argument; (C99) that a following <tt>c</tt> conversion specifier applies to a <code>wint_t</code> argument; (C99) that a following <tt>s</tt> conversion specifier applies to a pointer to a <code>wchar_t</code> argument; or has no effect on a following <tt>a</tt>, <tt>A</tt>, <tt>e</tt>, <tt>E</tt>, <tt>f</tt>, <tt>F</tt>, <tt>g</tt>, or <tt>G</tt> conversion specifier.</dd>
+</dl>
+<dl>
+<dt><tt>ll</tt> (ell-ell)&#160;</dt>
+<dd>(C99) Specifies that a following <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, or <tt>X</tt> conversion specifier applies to a <code>long long int</code> or <code>unsigned long long int</code> argument; or that a following <tt>n</tt> conversion specifier applies to a pointer to a <code>long long int</code> argument.</dd>
+</dl>
+<dl>
+<dt><tt>j</tt>&#160;</dt>
+<dd>(C99) Specifies that a following <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, or <tt>X</tt> conversion specifier applies to an <code>intmax_t</code> or <code>uintmax_t</code> argument; or that a following <tt>n</tt> conversion specifier applies to a pointer to an <code>intmax_t</code> argument.</dd>
+</dl>
+<dl>
+<dt><tt>z</tt>&#160;</dt>
+<dd>(C99) Specifies that a following <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, or <tt>X</tt> conversion specifier applies to a <code>size_t</code> or the corresponding signed integer type argument; or that a following <tt>n</tt> conversion specifier applies to a pointer to a signed integer type corresponding to <code>size_t</code> argument.</dd>
+</dl>
+<dl>
+<dt><tt>t</tt>&#160;</dt>
+<dd>(C99) Specifies that a following <tt>d</tt>, <tt>i</tt>, <tt>o</tt>, <tt>u</tt>, <tt>x</tt>, or <tt>X</tt> conversion specifier applies to a <code>ptrdiff_t</code> or the corresponding unsigned integer type argument; or that a following <tt>n</tt> conversion specifier applies to a pointer to a <code>ptrdiff_t</code> argument.</dd>
+</dl>
+<dl>
+<dt><tt>L</tt>&#160;</dt>
+<dd>Specifies that a following <tt>a</tt>, <tt>A</tt>, <tt>e</tt>, <tt>E</tt>, <tt>f</tt>, <tt>F</tt>, <tt>g</tt>, or <tt>G</tt> conversion specifier applies to a <code>long double</code> argument.</dd>
+</dl>
+<p>If a length modifier appears with any conversion specifier other than as specified above, the behavior is undefined.</p>
+<p>The conversion specifiers and their meanings are:</p>
+<dl>
+<dt><tt>d</tt>, <tt>i</tt>&#160;</dt>
+<dd>The <code>int</code> argument is converted to signed decimal in the style <i>[</i><tt><b>−</b></tt><i>]dddd</i>. The precision specifies the minimum number of digits to appear; if the value being converted can be represented in fewer digits, it is expanded with leading zeros. The default precision is 1. The result of converting a zero value with a precision of zero is no characters.</dd>
+</dl>
+<dl>
+<dt><tt>o</tt>, <tt>u</tt>, <tt>x</tt>, <tt>X</tt>&#160;</dt>
+<dd>The <code>unsigned int</code> argument is converted to unsigned octal (<tt>o</tt>), unsigned decimal (<tt>u</tt>), or unsigned hexadecimal notation (<tt>x</tt> or <tt>X</tt>) in the style <i>dddd</i>; the letters <tt><b>abcdef</b></tt> are used for <tt>x</tt> conversion and the letters <tt><b>ABCDEF</b></tt> for <tt>X</tt> conversion. The precision specifies the minimum number of digits to appear; if the value being converted can be represented in fewer digits, it is expanded with leading zeros. The default precision is 1. The result of converting a zero value with a precision of zero is no characters.</dd>
+</dl>
+<dl>
+<dt><tt>f</tt>, <tt>F</tt>&#160;</dt>
+<dd>A <code>double</code> argument representing a (finite) floating-point number is converted to decimal notation in the style <i>[</i><tt>−</tt><i>]ddd</i><tt>.</tt><i>ddd</i>, where the number of digits after the decimal-point character is equal to the precision specification. If the precision is missing, it is taken as 6; if the precision is zero and the <tt>#</tt> flag is not specified, no decimal-point character appears. If a decimal-point character appears, at least one digit appears before it. The value is rounded to the appropriate number of digits.<br />
+(C99) A <code>double</code> argument representing an infinity is converted in one of the styles <i>[</i><tt>-</tt><i>]</i><tt>inf</tt> or <i>[</i><tt>-</tt><i>]</i><tt>infinity</tt> — which style is implementation-defined. A double argument representing a NaN is converted in one of the styles <i>[</i><tt>-</tt><i>]</i><tt>nan</tt> or <i>[</i><tt>-</tt><i>]</i><tt>nan(</tt><i>n-char-sequence</i><tt>)</tt> — which style, and the meaning of any <i>n-char-sequence</i>, is implementation-defined. The <tt>F</tt> conversion specifier produces <tt>INF</tt>, <tt>INFINITY</tt>, or <tt>NAN</tt> instead of <tt>inf</tt>, <tt>infinity</tt>, or <tt>nan</tt>, respectively. (When applied to infinite and NaN values, the <tt>-</tt>, <tt>+</tt>, and <i>space</i> flags have their usual meaning; the <tt>#</tt> and <tt>0</tt> flags have no effect.)</dd>
+</dl>
+<dl>
+<dt><tt>e</tt>, <tt>E</tt>&#160;</dt>
+<dd>A <code>double</code> argument representing a (finite) floating-point number is converted in the style <i>[</i><tt>−</tt><i>]d</i><tt>.</tt><i>ddd</i><tt>e±</tt><i>dd</i>, where there is one digit (which is nonzero if the argument is nonzero) before the decimal-point character and the number of digits after it is equal to the precision; if the precision is missing, it is taken as 6; if the precision is zero and the <tt>#</tt> flag is not specified, no decimal-point character appears. The value is rounded to the appropriate number of digits. The <tt>E</tt> conversion specifier produces a number with <tt>E</tt> instead of <tt>e</tt> introducing the exponent. The exponent always contains at least two digits, and only as many more digits as necessary to represent the exponent. If the value is zero, the exponent is zero.<br />
+(C99) A <code>double</code> argument representing an infinity or NaN is converted in the style of an <tt>f</tt> or <tt>F</tt> conversion specifier.</dd>
+</dl>
+<dl>
+<dt><tt>g</tt>, <tt>G</tt>&#160;</dt>
+<dd>A <code>double</code> argument representing a (finite) floating-point number is converted in style <tt>f</tt> or <tt>e</tt> (or in style <tt>F</tt> or <tt>E</tt> in the case of a <tt>G</tt> conversion specifier), with the precision specifying the number of significant digits. If the precision is zero, it is taken as 1. The style used depends on the value converted; style <tt>e</tt> (or <tt>E</tt>) is used only if the exponent resulting from such a conversion is less than –4 or greater than or equal to the precision. Trailing zeros are removed from the fractional portion of the result unless the <tt>#</tt> flag is specified; a decimal-point character appears only if it is followed by a digit.<br />
+(C99) A <code>double</code> argument representing an infinity or NaN is converted in the style of an <tt>f</tt> or <tt>F</tt> conversion specifier.</dd>
+</dl>
+<dl>
+<dt><tt>a</tt>, <tt>A</tt>&#160;</dt>
+<dd>(C99) A double argument representing a (finite) floating-point number is converted in the style <i>[</i><tt>−</tt><i>]</i><tt>0x</tt><i>h</i><tt>.</tt><i>hhhh</i><tt>p±</tt><i>d</i>, where there is one hexadecimal digit (which is nonzero if the argument is a normalized floating-point number and is otherwise unspecified) before the decimal-point character (Binary implementations can choose the hexadecimal digit to the left of the decimal-point character so that subsequent digits align to nibble [4-bit] boundaries.) and the number of hexadecimal digits after it is equal to the precision; if the precision is missing and <code>FLT_RADIX</code> is a power of 2, then the precision is sufficient for an exact representation of the value; if the precision is missing and <code>FLT_RADIX</code> is not a power of 2, then the precision is sufficient to distinguish (The precision <i>p</i> is sufficient to distinguish values of the source type if 16<sup><i>p</i>–1</sup> &gt; <i>b<sup>n</sup></i> where <i>b</i> is <code>FLT_RADIX</code> and <i>n</i> is the number of base-<i>b</i> digits in the significand of the source type. A smaller <i>p</i> might suffice depending on the implementation's scheme for determining the digit to the left of the decimal-point character.) values of type <code>double</code>, except that trailing zeros may be omitted; if the precision is zero and the <tt>#</tt> flag is not specified, no decimal-point character appears. The letters <tt><b>abcdef</b></tt> are used for <tt>a</tt> conversion and the letters <tt><b>ABCDEF</b></tt> for <tt>A</tt> conversion. The <tt>A</tt> conversion specifier produces a number with <tt>X</tt> and <tt>P</tt> instead of <tt>x</tt> and <tt>p</tt>. The exponent always contains at least one digit, and only as many more digits as necessary to represent the decimal exponent of 2. If the value is zero, the exponent is zero.<br />
+A <code>double</code> argument representing an infinity or NaN is converted in the style of an <tt>f</tt> or <tt>F</tt> conversion specifier.</dd>
+</dl>
+<dl>
+<dt><tt>c</tt>&#160;</dt>
+<dd>If no <tt>l</tt> length modifier is present, the <code>int</code> argument is converted to an <code>unsigned char</code>, and the resulting character is written.<br />
+(C99) If an <tt>l</tt> length modifier is present, the <code>wint_t</code> argument is converted as if by an <tt>ls</tt> conversion specification with no precision and an argument that points to the initial element of a two-element array of <code>wchar_t</code>, the first element containing the <code>wint_t</code> argument to the <tt>lc</tt> conversion specification and the second a null wide character.</dd>
+</dl>
+<dl>
+<dt><tt>s</tt>&#160;</dt>
+<dd>If no <tt>l</tt> length modifier is present, the argument shall be a pointer to the initial element of an array of character type. (No special provisions are made for multibyte characters.) Characters from the array are written up to (but not including) the terminating null character. If the precision is specified, no more than that many characters are written. If the precision is not specified or is greater than the size of the array, the array shall contain a null character.<br />
+(C99) If an <tt>l</tt> length modifier is present, the argument shall be a pointer to the initial element of an array of <code>wchar_t</code> type. Wide characters from the array are converted to multibyte characters (each as if by a call to the <code>wcrtomb</code> function, with the conversion state described by an <code>mbstate_t</code> object initialized to zero before the first wide character is converted) up to and including a terminating null wide character. The resulting multibyte characters are written up to (but not including) the terminating null character (byte). If no precision is specified, the array shall contain a null wide character. If a precision is specified, no more than that many characters (bytes) are written (including shift sequences, if any), and the array shall contain a null wide character if, to equal the multibyte character sequence length given by the precision, the function would need to access a wide character one past the end of the array. In no case is a partial multibyte character written. (Redundant shift sequences may result if multibyte characters have a state-dependent encoding.)</dd>
+</dl>
+<dl>
+<dt><tt>p</tt>&#160;</dt>
+<dd>The argument shall be a pointer to <code>void</code>. The value of the pointer is converted to a sequence of printable characters, in an implementation-defined manner.</dd>
+</dl>
+<dl>
+<dt><tt>n</tt>&#160;</dt>
+<dd>The argument shall be a pointer to signed integer into which is written the number of characters written to the output stream so far by this call to <code>fprintf</code>. No argument is converted, but one is consumed. If the conversion specification includes any flags, a field width, or a precision, the behavior is undefined.</dd>
+</dl>
+<dl>
+<dt><tt>%</tt>&#160;</dt>
+<dd>A <tt>%</tt> character is written. No argument is converted. The complete conversion specification shall be <tt>%%</tt>.</dd>
+</dl>
+<p>If a conversion specification is invalid, the behavior is undefined. If any argument is not the correct type for the corresponding coversion specification, the behavior is undefined.</p>
+<p>In no case does a nonexistent or small field width cause truncation of a field; if the result of a conversion is wider than the field width, the field is expanded to contain the conversion result.</p>
+<p>For <tt>a</tt> and <tt>A</tt> conversions, if <code>FLT_RADIX</code> is a power of 2, the value is correctly rounded to a hexadecimal floating number with the given precision.</p>
+<p>It is recommended practice that if <code>FLT_RADIX</code> is not a power of 2, the result should be one of the two adjacent numbers in hexadecimal floating style with the given precision, with the extra stipulation that the error should have a correct sign for the current rounding direction.</p>
+<p>It is recommended practice that for <tt>e</tt>, <tt>E</tt>, <tt>f</tt>, <tt>F</tt>, <tt>g</tt>, and <tt>G</tt> conversions, if the number of significant decimal digits is at most <code>DECIMAL_DIG</code>, then the result should be correctly rounded. (For binary-to-decimal conversion, the result format's values are the numbers representable with the given format specifier. The number of significant digits is determined by the format specifier, and in the case of fixed-point conversion by the source value as well.) If the number of significant decimal digits is more than <code>DECIMAL_DIG</code> but the source value is exactly representable with <code>DECIMAL_DIG</code> digits, then the result should be an exact representation with trailing zeros. Otherwise, the source value is bounded by two adjacent decimal strings <i>L &lt; U</i>, both having <tt>DECIMAL_DIG</tt> significant digits; the value of the resultant decimal string <i>D</i> should satisfy <i>L ≤ D ≤ U</i>, with the extra stipulation that the error should have a correct sign for the current rounding direction.</p>
+<p>The <code>fprintf</code> function returns the number of characters transmitted, or a negative value if an output or encoding error occurred.</p>
+<p>The <code>printf</code> function is equivalent to <code>fprintf</code> with the argument <code>stdout</code> interposed before the arguments to <code>printf</code>. It returns the number of characters transmitted, or a negative value if an output error occurred.</p>
+<p>The <code>sprintf</code> function is equivalent to <code>fprintf</code>, except that the argument <code>s</code> specifies an array into which the generated input is to be written, rather than to a stream. A null character is written at the end of the characters written; it is not counted as part of the returned sum. If copying takes place between objects that overlap, the behavior is undefined. The function returns the number of characters written in the array, not counting the terminating null character.</p>
+<p>The <code>vfprintf</code> function is equivalent to <code>fprintf</code>, with the variable argument list replaced by <code>arg</code>, which shall have been initialized by the <code>va_start</code> macro (and possibly subsequent <code>va_arg</code> calls). The <code>vfprintf</code> function does not invoke the <code>va_end</code> macro. The function returns the number of characters transmitted, or a negative value if an output error occurred.</p>
+<p>The <code>vprintf</code> function is equivalent to <code>printf</code>, with the variable argument list replaced by <code>arg</code>, which shall have been initialized by the <code>va_start</code> macro (and possibly subsequent <code>va_arg</code> calls). The <code>vprintf</code> function does not invoke the <code>va_end</code> macro. The function returns the number of characters transmitted, or a negative value if an output error occurred.</p>
+<p>The <code>vsprintf</code> function is equivalent to <code>sprintf</code>, with the variable argument list replaced by <code>arg</code>, which shall have been initialized by the <code>va_start</code> macro (and possibly subsequent <code>va_arg</code> calls). The <code>vsprintf</code> function does not invoke the <code>va_end</code> macro. If copying takes place between objects that overlap, the behavior is undefined. The function returns the number of characters written into the array, not counting the terminating null character.</p>
+<p><br /></p>
+<h2><span class="editsection">[<a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit&amp;section=46" title="Edit section: References">edit</a>]</span> <span class="mw-headline" id="References">References</span></h2>
+<div class="reflist references" style="">
+<ol class="references">
+<li id="cite_note-0"><span class="mw-cite-backlink"><a href="#cite_ref-0">↑</a></span> <span class="reference-text">C99 §6.2.5/15</span></li>
+</ol>
+</div>
+<table class="noprint" style="border:1px solid black; width:100%; border-spacing:0px; margin:0.25em;">
+<tr>
+<td style="width:33%; background:#ffffe0;"><a href="/wiki/C_Programming/Standard_libraries" title="C Programming/Standard libraries">Previous: Standard libraries</a></td>
+<td style="width:33%; background:#ffffe0; text-align:center;"><a href="/wiki/C_Programming" title="C Programming">Index</a></td>
+<td style="width:33%; background:#ffffe0; text-align:right;"><a href="/wiki/C_Programming/Beginning_exercises" title="C Programming/Beginning exercises">Next: Beginning exercises</a></td>
+</tr>
+</table>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 303/1000000
+Post-expand include size: 1281/2048000 bytes
+Template argument size: 148/2048000 bytes
+Highest expansion depth: 7/40
+Expensive parser function count: 0/500
+-->
+
+<!-- Saved in parser cache with key enwikibooks:pcache:idhash:23135-0!*!0!default!!en!*!* and timestamp 20120817151434 -->
+</div>				<!-- /bodycontent -->
+								<!-- printfooter -->
+				<div class="printfooter">
+				Retrieved from "<a href="http://en.wikibooks.org/w/index.php?title=C_Programming/File_IO&amp;oldid=2267611">http://en.wikibooks.org/w/index.php?title=C_Programming/File_IO&amp;oldid=2267611</a>"				</div>
+				<!-- /printfooter -->
+												<!-- catlinks -->
+				<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/wiki/Category:C_Programming" title="Category:C Programming">C Programming</a></li></ul></div></div>				<!-- /catlinks -->
+												<!-- dataAfterContent -->
+				<div id='mw-data-after-content'>
+	<form method="post" action="/w/index.php?title=Special:ReaderFeedback&amp;action=submit" id="mw-feedbackform"><fieldset class="feedback_reviewform noprint"><legend><strong>What do you think of this page?</strong></legend>
+<p><i>Please take a moment to rate this page below. Your feedback is valuable and helps us improve our website.</i>
+</p><span id="mw-feedbackselects"><b><label for="wpreliability">Reliability</label>:</b>&#160;<select name="wpreliability" id="wpreliability" onchange="updateFeedbackForm()"><option class="rfb-rating-option-4" value="4">Excellent</option>
+<option class="rfb-rating-option-3" value="3">High</option>
+<option class="rfb-rating-option-2" value="2">Fair</option>
+<option class="rfb-rating-option-1" value="1">Low</option>
+<option class="rfb-rating-option-0" value="0">Poor</option>
+<option value="-1" selected="selected">(unsure)</option>
+</select>
+<b><label for="wpcompleteness">Completeness</label>:</b>&#160;<select name="wpcompleteness" id="wpcompleteness" onchange="updateFeedbackForm()"><option class="rfb-rating-option-4" value="4">Excellent</option>
+<option class="rfb-rating-option-3" value="3">High</option>
+<option class="rfb-rating-option-2" value="2">Fair</option>
+<option class="rfb-rating-option-1" value="1">Low</option>
+<option class="rfb-rating-option-0" value="0">Poor</option>
+<option value="-1" selected="selected">(unsure)</option>
+</select>
+<b><label for="wpnpov">Neutrality</label>:</b>&#160;<select name="wpnpov" id="wpnpov" onchange="updateFeedbackForm()"><option class="rfb-rating-option-4" value="4">Excellent</option>
+<option class="rfb-rating-option-3" value="3">High</option>
+<option class="rfb-rating-option-2" value="2">Fair</option>
+<option class="rfb-rating-option-1" value="1">Low</option>
+<option class="rfb-rating-option-0" value="0">Poor</option>
+<option value="-1" selected="selected">(unsure)</option>
+</select>
+<b><label for="wppresentation">Presentation</label>:</b>&#160;<select name="wppresentation" id="wppresentation" onchange="updateFeedbackForm()"><option class="rfb-rating-option-4" value="4">Excellent</option>
+<option class="rfb-rating-option-3" value="3">High</option>
+<option class="rfb-rating-option-2" value="2">Fair</option>
+<option class="rfb-rating-option-1" value="1">Low</option>
+<option class="rfb-rating-option-0" value="0">Poor</option>
+<option value="-1" selected="selected">(unsure)</option>
+</select>
+</span><input type="submit" value="Submit" id="submitfeedback" accesskey="b" title="Submit review [b]" /><input type="hidden" value="Special:ReaderFeedback" name="title" />
+<input type="hidden" value="C_Programming/File_IO" name="target" />
+<input type="hidden" value="2267611" name="oldid" />
+<input type="hidden" value="af6a832152bd6d87a3209a5b94f62553" name="validatedParams" /><input type="hidden" value="submit" name="action" />
+<input type="hidden" value="+\" name="wpEditToken" />
+<input name="commentary" size="12" value="" style="display:none;" />
+</fieldset></form>
+</div>
+				<!-- /dataAfterContent -->
+								<div class="visualClear"></div>
+				<!-- debughtml -->
+								<!-- /debughtml -->
+			</div>
+			<!-- /bodyContent -->
+		</div>
+		<!-- /content -->
+		<!-- header -->
+		<div id="mw-head" class="noprint">
+			
+<!-- 0 -->
+<div id="p-personal" class="">
+	<h5>Personal tools</h5>
+	<ul>
+		<li id="pt-createaccount"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=C+Programming%2FFile+IO&amp;type=signup" class="">Create account</a></li>
+		<li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=C+Programming%2FFile+IO" class="" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+<!-- /0 -->
+			<div id="left-navigation">
+				
+<!-- 0 -->
+<div id="p-namespaces" class="vectorTabs">
+	<h5>Namespaces</h5>
+	<ul>
+					<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/C_Programming/File_IO"  title="View the content page [c]" accesskey="c">Book</a></span></li>
+					<li  id="ca-talk"><span><a href="/wiki/Talk:C_Programming/File_IO"  title="Discussion about the content page [t]" accesskey="t">Discussion</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-variants" class="vectorMenu emptyPortlet">
+	<h4>
+		</h4>
+	<h5><span>Variants</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+			</div>
+			<div id="right-navigation">
+				
+<!-- 0 -->
+<div id="p-views" class="vectorTabs">
+	<h5>Views</h5>
+	<ul>
+					<li id="ca-view" class="selected"><span><a href="/wiki/C_Programming/File_IO" >Read</a></span></li>
+					<li id="ca-edit"><span><a href="/w/index.php?title=C_Programming/File_IO&amp;action=edit"  title="You can edit this page. Please use the preview button before saving [e]" accesskey="e">Edit</a></span></li>
+					<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=C_Programming/File_IO&amp;action=history"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+			</ul>
+</div>
+
+<!-- /0 -->
+
+<!-- 1 -->
+<div id="p-cactions" class="vectorMenu emptyPortlet">
+	<h5><span>Actions</span><a href="#"></a></h5>
+	<div class="menu">
+		<ul>
+					</ul>
+	</div>
+</div>
+
+<!-- /1 -->
+
+<!-- 2 -->
+<div id="p-search">
+	<h5><label for="searchInput">Search</label></h5>
+	<form action="/w/index.php" id="searchform">
+				<div id="simpleSearch">
+						<input type="text" name="search" value="" title="Search Wikibooks [f]" accesskey="f" id="searchInput" />						<button type="submit" name="button" title="Search the pages for this text" id="searchButton" width="12" height="13"><img src="//bits.wikimedia.org/static-1.20wmf10/skins/vector/images/search-ltr.png?303-4" alt="Search" /></button>								<input type='hidden' name="title" value="Special:Search"/>
+		</div>
+	</form>
+</div>
+
+<!-- /2 -->
+			</div>
+		</div>
+		<!-- /header -->
+		<!-- panel -->
+			<div id="mw-panel" class="noprint">
+				<!-- logo -->
+					<div id="p-logo"><a style="background-image: url(//upload.wikimedia.org/wikibooks/en/b/bc/Wiki.png);" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+				<!-- /logo -->
+				
+<!-- Navigation -->
+<div class="portal" id='p-Navigation'>
+	<h5>Navigation</h5>
+	<div class="body">
+		<ul>
+			<li id="n-mainpage"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main Page</a></li>
+			<li id="n-help"><a href="/wiki/Help:Contents" title="Find help on how to use and edit Wikibooks">Help</a></li>
+			<li id="n-Browse"><a href="/wiki/Wikibooks:Card_Catalog_Office" title="Check out what Wikibooks has to offer">Browse</a></li>
+			<li id="n-Cookbook"><a href="/wiki/Cookbook:Table_of_Contents" title="Learn recipes from around the world">Cookbook</a></li>
+			<li id="n-Wikijunior"><a href="/wiki/Wikijunior" title="Books for children">Wikijunior</a></li>
+			<li id="n-Featured-books"><a href="/wiki/Wikibooks:Featured_books" title="The best of Wikibooks">Featured books</a></li>
+			<li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+			<li id="n-sitesupport"><a href="//donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=20120717SB001&amp;uselang=en" title="Support Wikibooks">Donations</a></li>
+			<li id="n-randomrootpage"><a href="/wiki/Special:Randomrootpage">Random book</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /Navigation -->
+
+<!-- SEARCH -->
+
+<!-- /SEARCH -->
+
+<!-- Community -->
+<div class="portal" id='p-Community'>
+	<h5>Community</h5>
+	<div class="body">
+		<ul>
+			<li id="n-Reading-room"><a href="/wiki/Wikibooks:Reading_room" title="Discuss Wikibooks-related questions and concerns with others">Reading room</a></li>
+			<li id="n-portal"><a href="/wiki/Wikibooks:Community_Portal" title="Find your way around the Wikibooks community">Community portal</a></li>
+			<li id="n-currentevents"><a href="/wiki/Wikibooks:Reading_room/Bulletin_Board" title="Important community news">Bulletin Board</a></li>
+			<li id="n-maintenance"><a href="/wiki/Wikibooks:Maintenance" title="Frequent tasks that you can help with">Help out!</a></li>
+			<li id="n-Policies-and-guidelines"><a href="/wiki/Wikibooks:Policies_and_guidelines" title="Pages detailing important rules and procedures">Policies and guidelines</a></li>
+			<li id="n-contact"><a href="/wiki/Wikibooks:Contact_us" title="Alternative methods of communication">Contact us</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /Community -->
+
+<!-- TOOLBOX -->
+<div class="portal" id='p-tb'>
+	<h5>Toolbox</h5>
+	<div class="body">
+		<ul>
+			<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/C_Programming/File_IO" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+			<li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/C_Programming/File_IO" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+			<li id="t-upload"><a href="//commons.wikimedia.org/wiki/Commons:Upload" title="Upload files [u]" accesskey="u">Upload file</a></li>
+			<li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li>
+			<li id="t-permalink"><a href="/w/index.php?title=C_Programming/File_IO&amp;oldid=2267611" title="Permanent link to this revision of the page">Permanent link</a></li>
+<li id="t-cite"><a href="/w/index.php?title=Special:Cite&amp;page=C_Programming%2FFile_IO&amp;id=2267611" title="Information on how to cite this page">Cite this page</a></li><li id="t-rating"><a href="/w/index.php?title=Special:RatingHistory&amp;target=C_Programming/File_IO">Page rating</a></li>		</ul>
+	</div>
+</div>
+
+<!-- /TOOLBOX -->
+
+<!-- LANGUAGES -->
+<div class="portal" id='p-lang'>
+	<h5>In other languages</h5>
+	<div class="body">
+		<ul>
+			<li class="interwiki-pl"><a href="//pl.wikibooks.org/wiki/C/Czytanie_i_pisanie_do_plik%C3%B3w" title="C/Czytanie i pisanie do plików" lang="pl" hreflang="pl">Polski</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /LANGUAGES -->
+
+<!-- Sister projects -->
+<div class="portal" id='p-Sister_projects'>
+	<h5>Sister projects</h5>
+	<div class="body">
+		<ul>
+			<li id="n-Wikipedia"><a href="//en.wikipedia.org/wiki/Main_Page">Wikipedia</a></li>
+			<li id="n-Wikiversity"><a href="//en.wikiversity.org/wiki/Wikiversity:Main_Page">Wikiversity</a></li>
+			<li id="n-Wiktionary"><a href="//en.wiktionary.org/wiki/Wiktionary:Main_Page">Wiktionary</a></li>
+			<li id="n-Wikiquote"><a href="//en.wikiquote.org/wiki/Main_Page">Wikiquote</a></li>
+			<li id="n-Wikisource"><a href="//en.wikisource.org/wiki/Main_Page">Wikisource</a></li>
+			<li id="n-Wikinews"><a href="//en.wikinews.org/wiki/Main_Page">Wikinews</a></li>
+			<li id="n-Commons"><a href="//commons.wikimedia.org/wiki/Main_Page">Commons</a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- /Sister projects -->
+
+<!-- coll-print_export -->
+<div class="portal" id='p-coll-print_export'>
+	<h5>Print/export</h5>
+	<div class="body">
+		<ul id="collectionPortletList"><li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=C+Programming%2FFile+IO" title="Create a book or page collection" rel="nofollow">Create a collection</a></li><li id="coll-download-as-rl"><a href="/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=C+Programming%2FFile+IO&amp;oldid=2267611&amp;writer=rl" title="Download a PDF version of this wiki page" rel="nofollow">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=C_Programming/File_IO&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li></ul>	</div>
+</div>
+
+<!-- /coll-print_export -->
+			</div>
+		<!-- /panel -->
+		<!-- footer -->
+		<div id="footer">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 18 February 2012, at 21:03.</li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikibooks.org/wiki/Wikibooks:Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply. See <a href="//wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> for details.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="//wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikibooks:Welcome" title="Wikibooks:Welcome">About Wikibooks</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikibooks:General_disclaimer" title="Wikibooks:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-mobileview"><a href="http://en.m.wikibooks.org/w/index.php?title=C_Programming/File_IO&amp;mobileaction=toggle_view_mobile" class="noprint">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+					<li id="footer-copyrightico">
+						<a href="//wikimediafoundation.org/"><img src="//bits.wikimedia.org/images/wikimedia-button.png" width="88" height="31" alt="Wikimedia Foundation"/></a>
+					</li>
+					<li id="footer-poweredbyico">
+						<a href="//www.mediawiki.org/"><img src="//bits.wikimedia.org/static-1.20wmf10/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" width="88" height="31" /></a>
+					</li>
+				</ul>
+						<div style="clear:both"></div>
+		</div>
+		<!-- /footer -->
+		<script type="text/javascript">if(window.mw){
+mw.loader.state({"site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script src="//bits.wikimedia.org/en.wikibooks.org/load.php?debug=false&amp;lang=en&amp;modules=skins.vector&amp;only=scripts&amp;skin=vector&amp;*" type="text/javascript"></script>
+<script type="text/javascript">if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready","mediawiki.legacy.mwsuggest","ext.gadget.extlinks","ext.vector.collapsibleNav","ext.vector.collapsibleTabs","ext.vector.editWarning","ext.vector.simpleSearch","ext.flaggedRevs.advanced"], null, true);
+}</script>
+<script src="/w/index.php?title=MediaWiki%3AGadget-commons-file.js&amp;action=raw&amp;ctype=text%2Fjavascript&amp;2172780" type="text/javascript"></script>
+<script src="/w/index.php?title=MediaWiki%3AGadget-toolboxcompat.js&amp;action=raw&amp;ctype=text%2Fjavascript&amp;2161931" type="text/javascript"></script>
+<script src="//bits.wikimedia.org/static-1.20wmf10/extensions/ReaderFeedback/readerfeedback.js?1&amp;303-4" type="text/javascript"></script>
+<script src="//bits.wikimedia.org/en.wikibooks.org/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=scripts&amp;skin=vector&amp;*" type="text/javascript"></script>
+<!-- Served by srv260 in 0.136 secs. -->
+	</body>
+</html>

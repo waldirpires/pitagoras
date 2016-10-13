@@ -1,0 +1,104 @@
+Ex1
+
+ab^k
+
+Ex2
+
+a^kb
+
+
+abaabbab
+ abaabbab             0
+abaabbab
+  abaabbab            1
+abaabbab
+   abaabbab           2
+abaabbab
+    abaabbab          0
+abaabbab
+     abaabbab         0
+abaabbab
+      abaabbab        2
+abaabbab
+       abaabbab       0
+
+abaababaabaab
+ abaababaabaab		0
+abaababaabaab
+  abaababaabaab		1
+abaababaabaab        
+   abaababaabaab	3
+abaababaabaab
+    abaababaabaab	0
+abaababaabaab
+     abaababaabaab	6  biggest prefix
+abaababaabaab
+      abaababaabaab	0
+abaababaabaab
+       abaababaabaab	1
+abaababaabaab
+        abaababaabaab	5
+abaababaabaab
+         abaababaabaab	0
+abaababaabaab
+          abaababaabaab		1
+abaababaabaab
+           abaababaabaab	2
+abaababaabaab
+            abaababaabaab	0
+ 
+abaababaabaab
+abaaba		6
+ abaaba		0
+  abaaba	1
+   abaaba	3
+    abaaba	0
+     abaaba	6
+
+
+abaababaabaab
+001103010060-
+
+abaababaabaab
+
+h(i) = the longest prefix that is also a suffix of P
+0 to i-1
+h(3) -> first 3 is equal to last 3
+
+abaababaabaab
+abaababaabaab
+
+
+
+
+	  1         2
+1234556789012345678901234
+abaababaabacabaababaabaab
+abaababaabaab  (11-6=5)
+           |
+abaababaabacabaababaabaab
+     abaababaabaab  (6-3=3)
+           |
+abaababaabacabaababaabaab
+        abaababaabaab  (4-2=2)
+           |
+abaababaabacabaababaabaab
+          abaababaabaab
+           |
+abaababaabacabaababaabaab
+            abaababaabaab
+
+
+ABABAC
+  ABABAC
+001230
+
+http://www.enseignement.polytechnique.fr/informatique/profs/Jean-Jacques.Levy/00/pc4/strmatch/e.html
+
+http://www.cs.utexas.edu/~moore/best-ideas/string-searching/kpm-example.html#step02
+http://www.cs.utexas.edu/~moore/best-ideas/string-searching/fstrpos-example.html#step7
+
+
+
+AAACAAAAAC
+0120

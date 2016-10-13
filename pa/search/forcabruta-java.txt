@@ -1,0 +1,25 @@
+public class ForcaBruta {
+  private static int subString(String p, String t){
+    int n = t.length(); // tamanho da frase
+    int m = p.length(); // tamanho do padrão
+    int j = 0;    
+    for (int i = 0; i < n-m; i++){ // quantidade de comparações a serem realizadas
+      j = 0; // contador de acertos
+      // enquanto ainda não estiver chegado no fim do padrão e os
+      // caracteres forem iguais
+      while(j < m && t.charAt(i+j) == p.charAt(j)){
+        j++; // incrementa a quantidade de acertos
+      }
+      if (j == m) return i; // se a quantidade de acertos for igual ao tamanho 
+      // do padrão
+    } return -1; // caso contrário, retornar -1
+  }
+  
+  public static void main(String[] args) {
+    String t = "The book is on the table";
+    String p = "book";
+    
+    int i = subsString(p, t);
+    System.out.println("Resultado: " + i);
+  }
+}

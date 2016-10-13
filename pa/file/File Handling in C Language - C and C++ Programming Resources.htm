@@ -1,0 +1,995 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+<title>File Handling in C Language - C and C++ Programming Resources</title>
+<link href="http://www.mycplus.com/mycplus/wp-content/themes/mycplus1/css/mycplus_style.css" rel="stylesheet" type="text/css" />
+<link href="http://www.mycplus.com/mycplus/wp-content/themes/mycplus1/css/mycplus_print.css" rel="stylesheet" type="text/css" media="print" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.mycplus.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="C and C++ Programming Resources &raquo; File Handling in C Language Comments Feed" href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/feed/" />
+<link rel='stylesheet' id='wp-downloadmanager-css'  href='http://www.mycplus.com/mycplus/wp-content/plugins/wp-downloadmanager/download-css.css?ver=1.50' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-pagenavi-css'  href='http://www.mycplus.com/mycplus/wp-content/plugins/wp-pagenavi/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.mycplus.com/mycplus/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.mycplus.com/mycplus/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Virtual Functions in C++' href='http://www.mycplus.com/tutorials/cplusplus-programming-tutorials/virtual-functions/' />
+<link rel='next' title='Functions in C++' href='http://www.mycplus.com/tutorials/cplusplus-programming-tutorials/functions-2/' />
+<meta name="generator" content="WordPress 3.4.1" />
+<link rel='shortlink' href='http://wp.me/pkoSB-6z' />
+
+<!-- All in One SEO Pack 1.6.14.2 by Michael Torbert of Semper Fi Web Design[226,321] -->
+<meta name="description" content="Files handling in C Programming Language" />
+<meta name="keywords" content="file, files, bnary file, text file, handling, open file, read file, c programming,,c programming tutorials" />
+<link href="http://mycplus.com/mycplus.ico" type="image/x-icon" rel="shortcut icon" />
+<meta content="Copyright (c) 2008 by MYCPLUS Online Community" name="copyright" />
+<link rel="canonical" href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/" />
+<!-- /all in one seo pack -->
+	<link type="text/css" rel="stylesheet" href="http://www.mycplus.com/mycplus/wp-content/plugins/syntaxhighlighter-plus/syntaxhighlighter/styles/shCore.css"></link>
+	<link type="text/css" rel="stylesheet" href="http://www.mycplus.com/mycplus/wp-content/plugins/syntaxhighlighter-plus/syntaxhighlighter/styles/shThemeDefault.css"></link>
+
+</head>
+<body>
+<div id="wrapper">
+<div id="top_menu">
+  <h1><a href="http://www.mycplus.com">C and C++ Programming Resources</a></h1>
+    <!-- <ul> -->
+       <div class="menu-header-menu-container"><ul id="menu-header-menu" class="menu"><li id="menu-item-1632" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1632"><a href="http://www.mycplus.com/">Home</a></li>
+<li id="menu-item-1647" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1647"><a href="http://www.mycplus.com/category/featured-articles/">Blog</a></li>
+<li id="menu-item-1648" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1648"><a href="http://www.mycplus.com/forum/">Forums</a></li>
+<li id="menu-item-1634" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1634"><a href="http://www.mycplus.com/mailing-list/">Join us</a></li>
+<li id="menu-item-1633" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1633"><a href="http://www.mycplus.com/about/">About</a></li>
+<li id="menu-item-1638" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1638"><a href="http://www.mycplus.com/search/">Search</a></li>
+</ul></div>	<!-- <li class="page_item"><a href="http://www.mycplus.com/forum/" title="Join our discussion forum">Forum</a></li>
+  </ul> -->
+</div>
+<div class="menu-main-menu-container"><ul id="subnav" class="menu"><li id="menu-item-1639" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-1639"><a href="http://www.mycplus.com/category/tutorials/">Tutorials</a></li>
+<li id="menu-item-1649" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1649"><a href="http://www.mycplus.com/category/tutorials/c-programming-tutorials/">C Programming</a></li>
+<li id="menu-item-1650" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1650"><a href="http://www.mycplus.com/category/tutorials/cplusplus-programming-tutorials/">C++ Programming</a></li>
+<li id="menu-item-1640" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1640"><a href="http://www.mycplus.com/category/source-code/">Source Code</a></li>
+<li id="menu-item-1642" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1642"><a href="http://www.mycplus.com/category/computer-books/programming-books/">Programming Books</a></li>
+<li id="menu-item-1643" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1643"><a href="http://www.mycplus.com/category/free-utilities/">Free Utilities</a></li>
+<li id="menu-item-1645" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1645"><a href="http://mycplus.tradepub.com/">Free Magazines</a></li>
+<li id="menu-item-1646" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1646"><a href="http://www.mycplus.com/downloads/">Downloads</a></li>
+<li id="menu-item-1644" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1644"><a href="http://www.mycplus.com/category/programming-questions/">Programming FAQ</a></li>
+</ul></div>  <!--End Categories Navigation Bar-->
+<div class="content_padding">
+<div id="content_wrapper">
+  <div id="content">
+  <div id="rss_feed">
+	
+	<div class="rss_links">
+		<div class="rss_link"><a href="http://www.mycplus.com/feed/">RSS</a>&nbsp;-&nbsp;<a href="http://feedburner.google.com/fb/a/mailverify?uri=MycplusTutorials">EMAIL</a></div>
+		<div class="rss_link"><a href="http://www.mycplus.com/feed/"><img src="http://feeds2.feedburner.com/~fc/MycplusTutorials?bg=da6e1c&amp;fg=000000&amp;anim=0" style="border: 0pt none ;" alt="" width="88" height="26"></a></div>
+	</div>
+</div>
+<div style="font-size:1.6em;text-align:center;width:450px;padding:6px;" align="center">
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<div class="cse-branding-right" style="background-color:#FFFFFF;color:#000000">
+  <div class="cse-branding-form">
+    <form action="http://www.mycplus.com/search/" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="partner-pub-4182420121682993:pk8nl2-g8sp" />
+        <input type="hidden" name="cof" value="FORID:10" />
+        <input type="hidden" name="ie" value="ISO-8859-1" />
+        <input type="text" name="q" size="42" />
+        <input type="submit" name="sa" value="Search" />
+      </div>
+    </form>
+  </div>
+  <div class="cse-branding-logo">
+    <img src="http://www.google.com/images/poweredby_transparent/poweredby_FFFFFF.gif" alt="Google" />
+  </div>
+  <div class="cse-branding-text">
+    Custom Search
+  </div>
+</div>
+
+</div>        <h1 id="post-407"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/" rel="bookmark" title="Permanent Link to File Handling in C Language">
+      File Handling in C Language      </a></h1>
+    <!-- <p class="author">Posted on <em>
+      September 13th, 2008      </em></p> -->
+	  <div style="float:left;align=left;padding-right:10px;"><script type="text/javascript"><!--
+google_ad_client = "pub-4182420121682993";
+google_ad_slot = "5160443126";
+google_ad_width = 300;
+google_ad_height = 250;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>    <p>In this section, we will discuss about files which are very important for storing information permanently.  We store information in files for many purposes, like data processing by our programs.</p>
+<h1>What is a File?</h1>
+<p>Abstractly, a file is a collection of bytes stored on a secondary storage device, which is generally a disk of some kind. The collection of bytes may be interpreted, for example, as characters, words, lines, paragraphs and pages from a textual document; fields and records belonging to a database; or pixels from a graphical image. The meaning attached to a particular file is determined entirely by the data structures and operations used by a program to process the file. It is conceivable (and it sometimes happens) that a graphics file will be read and displayed by a program designed to process textual data. The result is that no meaningful output occurs (probably) and this is to be expected. A file is simply a machine decipherable storage media where programs and data are stored for machine usage.</p>
+<p>Essentially there are two kinds of files that programmers deal with text files and binary files. These two classes of files will be discussed in the following sections.</p>
+<h2>ASCII Text files</h2>
+<p>A text file can be a stream of characters that a computer can process sequentially. It is not only processed sequentially but only in forward direction. For this reason a text file is usually opened for only one kind of operation (reading, writing, or appending) at any given time.</p>
+<p>Similarly, since text files only process characters, they can only read or write data one character at a time. (In C Programming Language, Functions are provided that deal with lines of text, but these still essentially process data one character at a time.) A text stream in C is a special kind of file. Depending on the requirements of the operating system, newline characters may be converted to or from carriage-return/linefeed combinations depending on whether data is being written to, or read from, the file. Other character conversions may also occur to satisfy the storage requirements of the operating system. These translations occur transparently and they occur because the programmer has signalled the intention to process a text file.</p>
+<h2>Binary files</h2>
+<p>A binary file is no different to a text file. It is a collection of bytes. In C Programming Language a byte and a character are equivalent. Hence a binary file is also referred to as a character stream, but there are two essential differences.</p>
+<ol>
+<li> No special processing of the data occurs and each byte of data is transferred to or from the disk unprocessed.</li>
+<li>C Programming Language places no constructs on the file, and it may be read from, or written to, in any manner chosen by the programmer.</li>
+</ol>
+<p>Binary files can be either processed sequentially or, depending on the needs of the application, they can be processed using random access techniques. In C Programming Language, processing a file using random access techniques involves moving the current file position to an appropriate place in the file before reading or writing data. This indicates a second characteristic of binary files.<br />
+They a generally processed using read and write operations simultaneously.</p>
+<p>For example, a database file will be created and processed as a binary file. A record update operation will involve locating the appropriate record, reading the record into memory, modifying it in some way, and finally writing the record back to disk at its appropriate location in the file. These kinds of operations are common to many binary files, but are rarely found in applications that process text files.</p>
+<h2>Creating a  file and output some data</h2>
+<p>In order to  create files we have to learn about File I/O i.e. how to write data into a file and how to read data from a file. We will start this section with an example of writing data to a file. We begin as before with the include statement for stdio.h, then define some variables for use in the example including a rather strange looking new type.</p>
+<pre>/* Program to create a file and write some data the file */
+#include &lt;stdio.h&gt;
+#include &lt;stdio.h&gt;
+main( )
+{
+     FILE *fp;
+     char stuff[25];
+     int index;
+     fp = fopen("TENLINES.TXT","w"); /* open for writing */
+     strcpy(stuff,"This is an example line.");
+     for (index = 1; index &lt;= 10; index++)
+     	fprintf(fp,"%s Line number %d\n", stuff, index);
+     fclose(fp); /* close the file before ending program */
+}</pre>
+<p>The type FILE is used for a file variable and is defined in the stdio.h file. It is used to define a file pointer for use in file operations. Before we can write to a file, we must open it. What this really means is that we must tell the system that we want to write to a file and what the file name is. We do this with the fopen() function illustrated in the first line of the program. The file pointer, fp in our case, points to the file and two arguments are required in the parentheses, the file name first, followed by the file type.</p>
+<p>The file name is any valid DOS file name, and can be expressed in upper or lower case letters, or even mixed if you so desire. It is enclosed in double quotes. For this example we have chosen the name TENLINES.TXT. This file should not exist on your disk at this time. If you have a file with this name, you should change its name or move it because when we execute this program, its contents will be erased. If you donâ€™t have a file by this name, that is good because we will create one and put some data into it. You are permitted to include a directory with the file name.The directory must, of course, be a valid directory otherwise an error will occur. Also, because of the way C handles literal strings, the directory separation character â€˜\â€™ must be written twice. For example, if the file is to be stored in the \PROJECTS sub directory then the file name should be entered as &#8220;\\PROJECTS\\TENLINES.TXT&#8221;. The second parameter is the file attribute and can be any of three letters, r, w, or a, and must be lower case.</p>
+<h3>Reading (r)</h3>
+<p>When an r is used, the file is opened for reading, a w is used to indicate a file to be used for writing, and an a indicates that you desire to append additional data to the data already in an existing file. Most C compilers have other file attributes available; check your Reference Manual for details. Using the r indicates that the file is assumed to be a text file. Opening a file for reading requires that the file already exist. If it does not exist, the file pointer will be set to NULL and can be checked by the program.</p>
+<p>Here is a small program that reads a file and display its contents on screen.</p>
+<pre>/* Program to display the contents of a file on screen */
+#include &lt;stdio.h&gt;
+void main()
+{
+   FILE *fopen(), *fp;
+   int c;
+   fp = fopen("prog.c","r");
+   c = getc(fp) ;
+   while (c!= EOF)
+   {
+   		putchar(c);
+		c = getc(fp);
+   }
+   fclose(fp);
+}</pre>
+<h3>Writing (w)</h3>
+<p>When a file is opened for writing, it will be created if it does not already exist and it will be reset if it does, resulting in the deletion of any data already there. Using the w indicates that the file is assumed to be a text file.</p>
+<p>Here is the program to create a file and write some data into the file.</p>
+<pre>#include &lt;stdio.h&gt;
+int main()
+{
+ FILE *fp;
+ file = fopen("file.txt","w");
+ /*Create a file and add text*/
+ fprintf(fp,"%s","This is just an example :)"); /*writes data to the file*/
+ fclose(fp); /*done!*/
+ return 0;
+}</pre>
+<h3>Appending (a)</h3>
+<p>When a file is opened for appending, it will be created if it does not already exist and it will be initially empty. If it does exist, the data input point will be positioned at the end of the present data so that any new data will be added to any data that already exists in the file. Using the a indicates that the file is assumed to be a text file.</p>
+<p>Here is a program that will add text to a file which already exists and there is some text in the file.</p>
+<pre>#include &lt;stdio.h&gt;
+int main()
+{
+    FILE *fp
+    file = fopen("file.txt","a");
+    fprintf(fp,"%s","This is just an example :)"); /*append some text*/
+    fclose(fp);
+    return 0;
+}</pre>
+<h2>Outputting to the file</h2>
+<p>The job of actually outputting to the file is nearly identical to the outputting we have already done to the standard output device. The only real differences are the new function names and the addition of the file pointer as one of the function arguments. In the example program, fprintf replaces our familiar printf function name, and the file pointer defined earlier is the first argument within the parentheses. The remainder of the statement looks like, and in fact is identical to, the printf statement.</p>
+<h2>Closing a file</h2>
+<p>To close a file you simply use the function fclose with the file pointer in the parentheses. Actually, in this simple program, it is not necessary to close the file because the system will close all open files before returning to DOS, but it is good programming practice for you to close all files in spite of the fact that they will be closed automatically, because that would act as a reminder to you of what files are open at the end of each program.</p>
+<p>You can open a file for writing, close it, and reopen it for reading, then close it, and open it again for appending, etc. Each time you open it, you could use the same file pointer, or you could use a different one. The file pointer is simply a tool that you use to point to a file and you decide what file it will point to. Compile and run this program. When you run it, you will not get any output to the monitor because it doesnâ€™t generate any. After running it, look at your directory for a file named TENLINES.TXT and type it; that is where your output will be. Compare the output with that specified in the program; they should agree! Do not erase the file named TENLINES.TXT yet; we will use it in<br />
+some of the other examples in this section.</p>
+<p>Reading from a text file</p>
+<p>Now for our first program that reads from a file. This program begins with the familiar include, some data definitions, and the file opening statement which should require no explanation except for the fact that an r is used here because we want to read it.</p>
+<pre>#include &lt;stdio.h&gt;
+   main( )
+   {
+     FILE *fp;
+     char c;
+     funny = fopen("TENLINES.TXT", "r");
+     if (fp == NULL)
+		printf("File doesn't exist\n");
+     else {
+      do {
+       c = getc(fp); /* get one character from the file
+       */
+         putchar(c); /* display it on the monitor
+       */
+       } while (c != EOF); /* repeat until EOF (end of file)
+     */
+     }
+    fclose(fp);
+   }</pre>
+<p>In this program we check to see that the file exists, and if it does, we execute the main body of the program. If it doesn&#8217;t, we print a message and quit. If the file does not exist, the system will set the pointer equal to NULL which we can test. The main body of the program is one do while loop in which a single character is read from the file and output to the monitor until an EOF (end of file) is detected from the input file. The file is then closed and the program is terminated. At this point, we have the potential for one of the most common and most perplexing problems of programming in C. The variable returned from the getc function is a character, so we can use a char variable for this purpose. There is a problem that could develop here if we happened to use an unsigned char however, because C usually returns a minus one for an EOF &#8211; which an unsigned char type variable is not<br />
+capable of containing. An unsigned char type variable can only have the values of zero to 255, so it will return a 255 for a minus one in C. This is a very frustrating problem to try to find. The program can never find the EOF and will therefore never terminate the loop. This is easy to prevent: always have a char or int type variable for use in returning an EOF. There is another problem with this program but we will worry about it when we get to the next program and solve it with the one following that.</p>
+<p>After you compile and run this program and are satisfied with the results, it would be a good exercise to change the name of TENLINES.TXT and run the program again to see that the NULL test actually works as stated. Be sure to change the name back because we are still not finished with TENLINES.TXT.</p>
+    <p>Pages: [Page - 1] <a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/2/">[Page - 2]</a> <a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/3/">[Page - 3]</a> <a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/4/">[Page - 4]</a></p>	<p align="center">
+      <script type="text/javascript"><!--
+google_ad_client = "pub-4182420121682993";
+google_ad_slot = "2303404956";
+google_ad_width = 336;
+google_ad_height = 280;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    </p>
+	<p>Tags: <a href="http://www.mycplus.com/tag/c-programming/" rel="tag">C Programming</a>, <a href="http://www.mycplus.com/tag/file/" rel="tag">File</a>, <a href="http://www.mycplus.com/tag/text-file/" rel="tag">Text File</a></p> 
+
+    	
+        <!-- Story ends here -->
+    
+	<p>There are 272 Comments to this post. You can follow any responses to this entry through the <a href='http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/feed/'>RSS 2.0 feed</a>. 
+	You can
+			  skip to the end and <a href="#postcomment" title="Leave a comment"> leave a response </a> 
+							or <a href="#" rel="trackback"> TrackBack </a> from your own site.
+				 
+	</p>
+
+
+
+	<ul id="commentlist2">
+
+			<li class="comment even thread-even depth-1" id="comment-18838">
+				<div id="div-comment-18838" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />		<cite class="fn"><a href='http://www.mycplus.com' rel='external nofollow' class='url'>Heart</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-18838">
+			September 22, 2008 at 3:33 am</a>		</div>
+
+		<p>How do you write and read from a binary file using the C Language?.?</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-18846">
+				<div id="div-comment-18846" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />		<cite class="fn"><a href='http://www.mycplus.com' rel='external nofollow' class='url'>sunaina</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-18846">
+			September 23, 2008 at 5:18 pm</a>		</div>
+
+		<p>imagine we have a file that has the following text:<br />
+Two, one, 2,<br />
+One fish, two fish?!?<br />
+red_fish; BLUE FISH!!!</p>
+<p>how can I ignore all non-alphabetic characters and print the alphabetic characters to standard output &#8211; each word on a line by itself, with all the letters converted to lower case<br />
+output should be:<br />
+one<br />
+two<br />
+one<br />
+one<br />
+fish<br />
+two<br />
+fish<br />
+red<br />
+fish<br />
+blue<br />
+fish<br />
+Kindly let me know at the earliest and email to <a href="mailto:sunainabansal2003@yahoo.com">sunainabansal2003@yahoo.com</a><br />
+thank u</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-kanhaiyalal even depth-2" id="comment-19504">
+				<div id="div-comment-19504" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/9ac96927b131f568112b29e207a8817a?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">kanhaiyalal</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19504">
+			October 7, 2009 at 9:25 am</a>		</div>
+
+		<p>HI,Sunaina how r u i am not under standing ur problem,<br />
+plz send ur problem on my email id <a href="mailto:kanhaiyalalsn@gmail.com">kanhaiyalalsn@gmail.com</a></p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-sagar odd alt depth-2" id="comment-19619">
+				<div id="div-comment-19619" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/d855c43a1da3a5adc180d6cd166e57ff?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn"><a href='http://www.google.com' rel='external nofollow' class='url'>sagar</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19619">
+			June 5, 2010 at 2:23 pm</a>		</div>
+
+		<p>hi sunaina, i got ur prblm.<br />
+thats very easy.<br />
+You hav to just read the file byte by byte until u encounter any non-alphabetic character. Once a non alphabetic char is found, print the string up to that and then march to the next string starting with the alphabetic character. Best luck. If still hav any prblm email me at <a href="mailto:chillaraccount@gmail.com">chillaraccount@gmail.com</a> bye.</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-grnk18 even depth-2" id="comment-19647">
+				<div id="div-comment-19647" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/fe41306e6d940976fe65d167189da597?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">kitty</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19647">
+			November 25, 2010 at 8:54 pm</a>		</div>
+
+		<p>hey u solved that problem or not if u did just forward to me <a href="mailto:grnk18@gmail.com">grnk18@gmail.com</a> plese me program for that</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment odd alt thread-even depth-1" id="comment-18852">
+				<div id="div-comment-18852" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />		<cite class="fn"><a href='http://www.mycplus.com' rel='external nofollow' class='url'>Tabish </a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-18852">
+			September 23, 2008 at 11:32 pm</a>		</div>
+
+		<p>i want to show data which is store in a doc file please help me if any one have code for this.<br />
+<a href="mailto:tabishahmad1@gmail.com">tabishahmad1@gmail.com</a><br />
+please mail me.</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-18853">
+				<div id="div-comment-18853" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />		<cite class="fn"><a href='http://www.mycplus.com' rel='external nofollow' class='url'>kanu</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-18853">
+			September 24, 2008 at 12:56 am</a>		</div>
+
+		<p>bubble sorting using register and timer and restart the  sorting again where stop</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-even depth-1" id="comment-18858">
+				<div id="div-comment-18858" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />		<cite class="fn"><a href='http://www.mycplus.com' rel='external nofollow' class='url'>Mathews</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-18858">
+			September 24, 2008 at 11:21 pm</a>		</div>
+
+		<p>How to convert the contents of a file to upper case. file may contain bopth alphabetic and non-alphabetic characters.</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-antonisl even thread-odd thread-alt depth-1" id="comment-18939">
+				<div id="div-comment-18939" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/290ffbc9c8f37b5cae8625c28e428b76?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">antonisl</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-18939">
+			October 20, 2008 at 7:58 am</a>		</div>
+
+		<p>Hi,could you please help me with this:<br />
+&#8220;Write program in C which it will accept from the user the name of file of text and stores the characters that are found in the odd places in the file â€œodd.txtâ€ and those that find in even in â€œeven.txtâ€.&#8221;</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-martz odd alt thread-even depth-1" id="comment-18993">
+				<div id="div-comment-18993" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/6abd3fffac61f3b1b4029dcfc2c0ed48?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">martz</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-18993">
+			November 19, 2008 at 8:48 am</a>		</div>
+
+		<p>-create a program that will compute the running time of another program, not showing the running<br />
+        time in seconds but by number of (Tfetch, Tstore, Tdelete, etc.) or any related running time axioms..</p>
+<p>COULD SOMEONE HELP ME WITH THIS PROBLEM????&#8230;<br />
+hoping for your kind response&#8230;<br />
+just send to my email: <a href="mailto:canon_martina@yahoo.com.ph">canon_martina@yahoo.com.ph</a></p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-martinnitram even thread-odd thread-alt depth-1" id="comment-19003">
+				<div id="div-comment-19003" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/43b7a13f65839da8e80950bb9a8503db?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">martinnitram</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19003">
+			November 24, 2008 at 6:39 am</a>		</div>
+
+		<p>please i need help in two or three days about this c problem; develop a simple user authentication system using C language. The system should allow you to register usernames into a file and then check if the user is valid. Remember that to check the validity of the user, you must first enter the username of that user and the system checks if this user exists in the file that stores the users. If a wrong username is supplied to the system, it should display to you an appropriate message, for example â€œInvalid Userâ€. When you are through with authentication, the system should display all the users stored in the file. you can kindly post your reply to <a href="mailto:aine.brian@yahoo.com">aine.brian@yahoo.com</a></p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-vikibe odd alt thread-even depth-1" id="comment-19032">
+				<div id="div-comment-19032" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/f1e64539c117ff9bf7475a8768369e22?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">vikibe</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19032">
+			December 28, 2008 at 12:31 pm</a>		</div>
+
+		<p>Hi, i want to delete a line in a file and replace it with another line.can i use the file pointer or help me?</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-supriya even thread-odd thread-alt depth-1 parent" id="comment-19135">
+				<div id="div-comment-19135" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/d12d5c10be1f17b9be1734faa81dc1f8?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">supriya</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19135">
+			March 19, 2009 at 10:10 pm</a>		</div>
+
+		<p>hi&#8230;can anyone help me in writing a c program to delete a particular word from file thnks in advance</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-kanhaiyalal odd alt depth-2" id="comment-19505">
+				<div id="div-comment-19505" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/9ac96927b131f568112b29e207a8817a?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">kanhaiyalal</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19505">
+			October 7, 2009 at 9:28 am</a>		</div>
+
+		<p>hi, Supriya how r u i will help u plz send your problem on my email id <a href="mailto:kanhaiyalalsn@gmail.com">kanhaiyalalsn@gmail.com</a></p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-vinay even depth-2" id="comment-19588">
+				<div id="div-comment-19588" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/376d15a5089074c5c032c2693c86f3f5?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">vinnu</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19588">
+			February 24, 2010 at 10:40 am</a>		</div>
+
+		<p>hi&#8230;&#8230;.. supriya i m vinay from bhopal i m mca student whats your question i dont undersdand please send me with code on my email address <a href="mailto:vinay.intech@rediffmail.com">vinay.intech@rediffmail.com</a>          thanks&#8230;&#8230;&#8230;&#8230;.</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment byuser comment-author-vinay odd alt thread-even depth-1 parent" id="comment-19590">
+				<div id="div-comment-19590" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/376d15a5089074c5c032c2693c86f3f5?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">vinnu</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19590">
+			February 25, 2010 at 10:13 am</a>		</div>
+
+		<p>hi&#8230;..all<br />
+write a program i c without using main().how posssibbe? if anybody has know pls send me answer with code on my email <a href="mailto:address.vinay.intech@rediffmail.com">address.vinay.intech@rediffmail.com</a> this question<br />
+is a infosys software system</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-grnk18 even depth-2" id="comment-19648">
+				<div id="div-comment-19648" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/fe41306e6d940976fe65d167189da597?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">kitty</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19648">
+			November 25, 2010 at 9:02 pm</a>		</div>
+
+		<p>we can do by using macros<br />
+#define a main<br />
+void a()<br />
+{<br />
+ printf(&#8220;hello   &#8220;);<br />
+}<br />
+if u run this program it will execute<br />
+open a new file and include this file so that there is no word main<br />
+and it will show the output<br />
+like<br />
+#include &#8220;xx.c&#8221;<br />
+save the above program with xx.c</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment byuser comment-author-chinmayee odd alt thread-odd thread-alt depth-1" id="comment-19605">
+				<div id="div-comment-19605" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/7c6a995ff27c9e7bdf45564661c4cfa4?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">chinmayee</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19605">
+			March 25, 2010 at 7:58 pm</a>		</div>
+
+		<p>hi can anyone help me  with this problem does anyone know how password is hidden and typed as a dot using file handling plz do reply at <a href="mailto:cbaitharu@yahoo.co.in">cbaitharu@yahoo.co.in</a></p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-umesh314 even thread-even depth-1" id="comment-19630">
+				<div id="div-comment-19630" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/6d951fa1082dc7715301751301c847b2?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">umesh314</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19630">
+			August 2, 2010 at 4:16 pm</a>		</div>
+
+		<p>have any kind of problem or want any source code &#8212;<br />
+contact<br />
+<a href="mailto:umesh314@gmail.com">umesh314@gmail.com</a><br />
+or <a href="mailto:umesh314@yahoo.com">umesh314@yahoo.com</a></p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-rayjay1990 odd alt thread-odd thread-alt depth-1" id="comment-19633">
+				<div id="div-comment-19633" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/0334648369d18fdba363e36b8249f5dc?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">RayJay1990</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19633">
+			August 27, 2010 at 2:48 pm</a>		</div>
+
+		<p>Hey I was wondering if you could help me.</p>
+<p>If I had a list of information about several cars in a text file, e.g. Color, Year, Horsepower etc. and I needed to make a program that will read the info and store it in an array of structures, what would the code be like?</p>
+<p>Also I was wondering, how would the text file look like too. Is it simply just your basic text file with no computation done to it what so ever, like just simply separated by spaces, e.g. (Blue 1999 160) with the list going downwards or do you have add stuff to it e.g fscan etc.</p>
+<p>I&#8217;m just starting off programing and this point has been confusing me for a very long time, any help would be deeply appreciated. Thanks</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="pingback even thread-even depth-1" id="comment-19640">
+				<div id="div-comment-19640" class="comment-body">
+				<div class="comment-author vcard">
+				<cite class="fn"><a href='http://www.linuxquestions.org/questions/programming-9/c-how-to-open-a-txt-file-and-then-display-the-data-837708/#post4125712' rel='external nofollow' class='url'>C - how to open a txt file and then display the data</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19640">
+			October 13, 2010 at 11:39 am</a>		</div>
+
+		<p>[...] display data with first line and label it 1 and then incremented by 1 for each additional line.    <a href="http://www.mycplus.com/tutorials/c-p" rel="nofollow">http://www.mycplus.com/tutorials/c-p</a>&#8230;file-handling/  It is always better to search Google before posting [...]</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-patel-asif odd alt thread-odd thread-alt depth-1 parent" id="comment-19645">
+				<div id="div-comment-19645" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/e693ae75fd76a64ee080770a8fdcec53?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">patel asif</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19645">
+			November 16, 2010 at 3:04 pm</a>		</div>
+
+		<p>hi<br />
+plz help me<br />
+write in file<br />
+add record<br />
+modify record<br />
+delete record<br />
+display record<br />
+send program<br />
+use the following structur<br />
+struct stud {int stud no,char*name,char*courser};</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-bobo_chacha even depth-2" id="comment-19719">
+				<div id="div-comment-19719" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/e9b6976d00f2a17c149815b7dc006b5a?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">bobo_chacha</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19719">
+			March 27, 2011 at 6:47 pm</a>		</div>
+
+		<p>actually i had an problem the same as yours&#8230;.<br />
+please help us&#8230;&#8230;&#8230;..</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment byuser comment-author-harendra odd alt thread-even depth-1" id="comment-19724">
+				<div id="div-comment-19724" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/333dc3fd840bcd8d98ce5e304837eed2?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">harendra</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19724">
+			April 5, 2011 at 11:00 am</a>		</div>
+
+		<p>hi,plz help me to write a programme in c that if a txt file having 13 colums and we want to read only mid 4 colums and want to write in new .dat file only those 4 colums which we need so what is the programme for that..plz reply me on my mail id <a href="mailto:harendra_dadhich@rediffmail.com">harendra_dadhich@rediffmail.com</a>.</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-ayu even thread-odd thread-alt depth-1 parent" id="comment-19849">
+				<div id="div-comment-19849" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/09a4cf86356715e254b4f2c0b28c696b?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">ayu</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19849">
+			June 5, 2011 at 9:29 pm</a>		</div>
+
+		<p>hi. this is my first file handling program. it does not run even when it compiles withouit any errors. plz suggest the correction.</p>
+<p>#include<br />
+#include<br />
+void main()<br />
+{<br />
+FILE *fp;<br />
+char ch;<br />
+fp=fopen(&#8220;D:\olddrive\study\TurboC3\BIN\luc\chap12\ayu.txt&#8221;,&#8221;r&#8221;);<br />
+while(1)<br />
+{<br />
+ch=fgetc(fp);<br />
+if(ch==EOF)<br />
+break;<br />
+printf(&#8220;%c&#8221;,ch);<br />
+}<br />
+fclose(fp);<br />
+getch();<br />
+}</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		<ul class='children'>
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-19851">
+				<div id="div-comment-19851" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/de8624c44d6b68676dd5cb20489387a4?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn"><a href='http://www.mycplus.com/' rel='external nofollow' class='url'>saqib</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19851">
+			June 6, 2011 at 12:23 pm</a>		</div>
+
+		<p>Try fp=fopen(“D:\\olddrive\\study\\TurboC3\\BIN\\luc\\chap12\\ayu.txt”,”r”);</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+</ul>
+</li>
+		<li class="comment byuser comment-author-binta-dalwadi even thread-even depth-1" id="comment-21126">
+				<div id="div-comment-21126" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/7dea298e7195fb250ddc28908ac96560?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">binta dalwadi</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-21126">
+			December 18, 2011 at 6:43 pm</a>		</div>
+
+		<p>i have a big trouble my intelligent friends&#8230;<br />
+i have a program of &#8220;Find and Replace using File Handling&#8221; concept..<br />
+In that i am neither able to find a string from a created file nor replace a new string in place of given string&#8230;</p>
+<p>Please try 2 help me&#8230;<br />
+I m in very big trouble..<br />
+you can catch me on my email id.. it is &#8220;bd_love_20@yahoo.com&#8221;</p>
+<p>It will b so nice of you if you could try to help me..<br />
+I m available on my yahoo id&#8230;</p>
+<p>Thanx..<br />
+Binta Dalwadi</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-tanishq odd alt thread-odd thread-alt depth-1" id="comment-21366">
+				<div id="div-comment-21366" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/02194a897a2f530c56b32e1189a364ba?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">Tanishq</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-21366">
+			February 4, 2012 at 11:09 pm</a>		</div>
+
+		<p>hii&#8230; can any one help me out for source code for:<br />
+actually i hv to write a program that creates a text file and counts the number of lines that start with &#8216;A&#8217;??<br />
+please send the source for the obove que as early as possible,,<br />
+on my id <a href="mailto:tanishqagarwal2011@gmail.com">tanishqagarwal2011@gmail.com</a><br />
+thanks in advance!!</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-bharath-reddy even thread-even depth-1" id="comment-21562">
+				<div id="div-comment-21562" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/4796fbcd076ee0a6d53b9f4db26051f9?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">bharath reddy</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-21562">
+			May 4, 2012 at 4:10 pm</a>		</div>
+
+		<p>How to open an excel file in c ???</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-sumanthboss odd alt thread-odd thread-alt depth-1" id="comment-21609">
+				<div id="div-comment-21609" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/dc6b62fa35bb4fa87ba50e780375ddba?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">sumanthboss</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-21609">
+			May 19, 2012 at 10:43 pm</a>		</div>
+
+		<p>HI all,<br />
+Im using ubuntu . i want to take a file as an input , and the file contains a query which is to be exected on mysql server using C language strictly . pls help me . i&#8217;ve tried . im able to read the contains of the file , but cannot execute it .</p>
+<p>text file name is test.txt and it contains SELECT *from table; and this should be executed</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-pallavi even thread-even depth-1" id="comment-21661">
+				<div id="div-comment-21661" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/c14f49aaf9a9c334dc2986bfecd3e6d8?s=50&amp;d=http%3A%2F%2F0.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">pallavi</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-21661">
+			July 5, 2012 at 3:34 pm</a>		</div>
+
+		<p>hai friends i have a doubt on files concept,write a program on student data and display on moniitor,the student data is student roll no<br />
+name<br />
+6 subject marks,tot,avg,res,grade<br />
+the output is in the form of<br />
+no name s1 s2 s3 s4 s5 s6 tot avg res grd<br />
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br />
+1 raj 65 76 88 99 100 56</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-8150">
+				<div id="div-comment-8150" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />		<cite class="fn"><a href='http://www.mycplus.com' rel='external nofollow' class='url'>krishna kishore</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-8150">
+			December 22, 2006 at 3:49 am</a>		</div>
+
+		<pre>#include&lt;stdio.h&gt;
+
+main()
+{
+
+		FILE *sp, *tp;
+		char ch,nextch;
+		int index = 0;
+
+		sp = fopen("d:\hello1.txt","r");
+		tp = fopen("d:\remove.txt","w");
+
+		if(sp == NULL)
+		{
+			perror("Cannot Open Source File");
+			return 0;
+		}
+
+		while( (ch = fgetc(sp)) != EOF)
+		{
+				if(ch == 10)
+				{
+					index++;
+					nextch = fgetc(sp);
+
+					if(ch == 10 &amp;&amp; nextch != 10)
+					{
+						fputc(ch, tp);
+						fputc(nextch, tp);
+					}
+
+					
+				}
+
+				if(ch != 10)
+				{
+					fputc(ch,tp);
+					index++;
+				}
+
+		}
+
+}</pre>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment even thread-even depth-1" id="comment-14038">
+				<div id="div-comment-14038" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />		<cite class="fn"><a href='http://www.mycplus.com' rel='external nofollow' class='url'>aman</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-14038">
+			March 12, 2007 at 9:33 am</a>		</div>
+
+		<p>Hey see there are three more modes to open a file that are w+ : use to open a file which can be both read and write<br />
+r+ : use to open a file in which we can write more with also doing alteration in before written data<br />
+a+ : this is used to read and write data but wihtout doing alteration in existing data in file if file already exists<br />
+for creating numeric data files we have to open them in binary mode like if we want to read an existing file we will use mode that is &#8220;rb&#8221;<br />
+eg: fp=fopen(&#8220;abc&#8221;,&#8221;rb&#8221;);<br />
+same for write mode </p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-15337">
+				<div id="div-comment-15337" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=50' class='avatar avatar-50 photo avatar-default' height='50' width='50' />		<cite class="fn"><a href='http://www.mycplus.com' rel='external nofollow' class='url'>jai</a></cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-15337">
+			June 13, 2007 at 5:36 am</a>		</div>
+
+		<p>you better give the format of the file. otherwise it will be difficult<br />
+&#8212;&#8212;&#8211; Original Message &#8212;&#8212;&#8211;</p>
+<p>&#8212;&#8212;&#8211; Original Message &#8212;&#8212;&#8211;<br />
+hello. please send to me a code  to sort the contents of file&#8230;..thank alot</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+		<li class="comment byuser comment-author-ashley even thread-even depth-1" id="comment-19594">
+				<div id="div-comment-19594" class="comment-body">
+				<div class="comment-author vcard">
+		<img alt='' src='http://1.gravatar.com/avatar/58aba46b085227ef0f1bf357b577ee1e?s=50&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D50&amp;r=G' class='avatar avatar-50 photo' height='50' width='50' />		<cite class="fn">ashley</cite> <span class="says">says:</span>		</div>
+
+		<div class="comment-meta commentmetadata"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-5/#comment-19594">
+			March 8, 2010 at 7:43 pm</a>		</div>
+
+		<p>i want to do a database using file handling in cpp.its a music shoppe database..plz help</p>
+
+		<div class="reply">
+		<a rel="nofollow" class="comment-reply-login" href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">Log in to Reply</a>		</div>
+				</div>
+		</li>
+
+	</ul>
+
+
+<div class="navigation">
+		<div class="alignleft"><a href="http://www.mycplus.com/tutorials/c-programming-tutorials/file-handling/comment-page-4/#comments" >&laquo; Older Comments</a> | </div> 
+		<div class="alignright"></div>
+	</div>
+ 
+	
+	</p>
+<hr>
+
+<a name="postcomment" title="Leave a comment"></a>
+
+
+<div id="respond">
+
+<h3 style="padding-left:0px;">Leave a Reply</h3>
+
+<div class="cancel-comment-reply">
+	<a rel="nofollow" id="cancel-comment-reply-link" href="/tutorials/c-programming-tutorials/file-handling/#respond" style="display:none;">Click here to cancel reply.</a></div>
+
+<p>You must be <a href="http://www.mycplus.com/mycplus/wp-login.php?redirect_to=http%3A%2F%2Fwww.mycplus.com%2Ftutorials%2Fc-programming-tutorials%2Ffile-handling%2F">logged in</a> to post a comment.</p>
+</div>
+
+  </div>
+<div id="sidebar">  
+  
+<!-- Adsense -->  
+  
+ <!-- <h3>Tutorial Categories</h3> -->  
+<div class="menu-left-menu-container"><ul id="menu-left-menu" class="menu"><li id="menu-item-1654" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-1654"><a href="http://www.mycplus.com/category/tutorials/c-programming-tutorials/">C Programming Tutorials</a></li>
+<li id="menu-item-1656" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1656"><a href="http://www.mycplus.com/category/tutorials/cplusplus-programming-tutorials/">C++ Programming Tutorials</a></li>
+<li id="menu-item-1655" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1655"><a href="http://www.mycplus.com/category/tutorials/csharp-programming-tutorials/">C# Programming Tutorials</a></li>
+<li id="menu-item-1673" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1673"><a href="http://www.mycplus.com/category/tutorials/object-oriented-programming/">Object Oriented Programming</a></li>
+</ul></div>  
+<div style="font-family:Georgia, 'Times New Roman', Times, serif;"><h3></h3><script type="text/javascript"><!--
+google_ad_client = "pub-4182420121682993";
+google_ad_slot = "2565956960";
+google_ad_width = 250;
+google_ad_height = 250;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>  
+  
+<div class="menu-left-menu-1-container"><ul id="menu-left-menu-1" class="menu"><li id="menu-item-1722" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1722"><a href="http://www.mycplus.com/category/source-code/c-source-code/">C Programming Source Code</a></li>
+<li id="menu-item-1723" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1723"><a href="http://www.mycplus.com/category/source-code/cplusplus-source-code/">C++ Source Code</a></li>
+<li id="menu-item-1724" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1724"><a href="http://www.mycplus.com/category/computer-books/programming-books/">Programming Books</a></li>
+<li id="menu-item-1726" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1726"><a href="http://www.mycplus.com/category/source-code/java/">Java Programming Books</a></li>
+<li id="menu-item-1727" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1727"><a href="http://www.mycplus.com/category/tutorials/programming-styles/">Programming Styles</a></li>
+<li id="menu-item-1725" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1725"><a href="http://www.mycplus.com/category/free-utilities/">Free Utilities</a></li>
+</ul></div>  
+  
+<!-- <h3>Link Partners</h3>
+ 
+-->
+
+</div><div class="clear">
+</div></div>
+<div id="footer">
+  <div id="footer_wrapper">
+    <!--Begin Footer Archives-->
+    <div class="footerboxes"><h3><a class='rsswidget' href='http://cts.tradepub.com/cts4/?ptnr=mycplus&#038;tm=rss_Infosoft' title='Syndicate this content'><img style='border:0' width='14' height='14' src='http://www.mycplus.com/mycplus/wp-includes/images/rss.png' alt='RSS' /></a> <a class='rsswidget' href='http://mycplus.tradepub.com/?pt=cat&#038;page=Infosoft' title='Free publications and offers about software and software development.'>Latest Offers</a></h3><ul><li><a class='rsswidget' href='http://mycplus.tradepub.com/c/pubRD.mpl?sr=rss&#038;_t=rss&#038;pc=w_datd04' title='DataCore recently launched the newest version of its storage virtualization software, SANsymphony-V R9, expanding its capabilities to become a “Storage Hypervisor for the Cloud.” With increased flexibility, scalability, and management automation, R9 is ideally suited for midsize and enterprise IT organizations alike. Concurrently, the company introduced its  [&hellip;]'>The Storage Hypervisor for the Cloud</a></li><li><a class='rsswidget' href='http://mycplus.tradepub.com/c/pubRD.mpl?sr=rss&#038;_t=rss&#038;pc=w_datd01' title='Research shows that the majority of medium and large enterprises overlook storage when implementing a virtualized operating environment. That leads to increased storage costs, slow application performance, limited availability and compromised business continuity. Without storage virtualization, it&#039;s difficult -- maybe even impossible -- to realize the f [&hellip;]'>The Storage Hypervisor: Taking Storage Virtualization to the Next Level</a></li><li><a class='rsswidget' href='http://mycplus.tradepub.com/c/pubRD.mpl?sr=rss&#038;_t=rss&#038;pc=w_datd02' title='In this on-demand webcast, Chris Kane, Director of Technical Operations at Homecare Homebase, and Augie Gonzalez, Director of Product Marketing at DataCore Software, share first-hand experience in what it takes to make the switch to private cloud storage, including:Actionable advice for tackling the challenges of cloud-ready storage -- where to start and how [&hellip;]'>The Storage Side of Private Clouds: Keeping it Light and Inexpensive</a></li><li><a class='rsswidget' href='http://mycplus.tradepub.com/c/pubRD.mpl?sr=rss&#038;_t=rss&#038;pc=w_datd05' title='How do you get CIOs to jump on the storage virtualization bandwagon if they&#039;re not on it already? Use these five compelling points to persuade them that storage virtualization is right for their organization:It&#039;s Inevitable and StrategicDrives Productivity and InnovationTalk Return on InvestmentDeferring CapEx, Reducing OpExTimes are Changing and s [&hellip;]'>How to Sell Storage Virtualization to Your CIO</a></li><li><a class='rsswidget' href='http://mycplus.tradepub.com/c/pubRD.mpl?sr=rss&#038;_t=rss&#038;pc=w_artm02' title='You can learn how to take your Adobe Photoshop designs and convert them into fully functional websites using HTML/CSS. This definitive guide doesn&#039;t just walk you through the basic process, it also teaches you to analyze your graphics before you write one line of code, check your design across multiple browsers, and handle any necessary bug fixes.Reques [&hellip;]'>How to Convert PSD to HTML/CSS--Free 52 page preview</a></li></ul></div> 
+      <!--End Footer Archives-->
+    <!--Begin Footer Featured Posts-->
+    <div class="footerboxes"><h3><a class='rsswidget' href='http://www.mycplus.com/forum/rss.php' title='Syndicate this content'><img style='border:0' width='14' height='14' src='http://www.mycplus.com/mycplus/wp-includes/images/rss.png' alt='RSS' /></a> <a class='rsswidget' href='http://www.mycplus.com/forum' title='C and C++ Programming Tutorials, Source Code and Discussion Forum.'>Recent Forum Posts</a></h3><ul><li><a class='rsswidget' href='http://www.mycplus.com/forum/post6221.htm#p6221' title='Acquistare Chloromycetin === FARMACIA === Acquistare Chloramphenicol ...Statistics : Posted by SoasiaHaL • on Mon Aug 27, 2012 9:21 am • Replies 0 • Views 1 [&hellip;]'>Acquistare Chloramphenicol farmacia, comprare Chloromycetin</a></li><li><a class='rsswidget' href='http://www.mycplus.com/forum/post6220.htm#p6220' title='Acheter Naprosyn === PHARMACIE === Achat Naproxen acheter Naprosyn Courbevoiesans ordonnance...Statistics : Posted by SoasiaHaL • on Mon Aug 27, 2012 9:19 am • Replies 0 • Views 1 [&hellip;]'>Achat Naproxen en ligne, acheter Naproxen 500 mg en ligne</a></li><li><a class='rsswidget' href='http://www.mycplus.com/forum/post6219.htm#p6219' title='Buy Principen === BUY ONLINE === Buy Ampicillin Click price below and you will be redirected to our pharmacy. ...Statistics : Posted by SoasiaHaL • on Mon Aug 27, 2012 9:11 am • Replies 0 • Views 1 [&hellip;]'>Get Ampicillin cost at walmart, where to buy generic Princip</a></li><li><a class='rsswidget' href='http://www.mycplus.com/forum/post6218.htm#p6218' title='Comprar Lozol Sr === FARMACIA === Comprare Indapamide comprar em portugal Indapamide comprimido line...Statistics : Posted by SoasiaHaL • on Mon Aug 27, 2012 9:07 am • Replies 0 • Views 1 [&hellip;]'>Comprar Indapamide generico onde comprar, tabletas de Indapa</a></li><li><a class='rsswidget' href='http://www.mycplus.com/forum/post6217.htm#p6217' title='Buy Kamagra === ENTER OVERNIGHT PHARMACY === Buy Sildenafil Citrate 1-3 days fast delivery from USA pharmacy ...Statistics : Posted by ImmetleBimb • on Mon Aug 27, 2012 9:04 am • Replies 0 • Views 1 [&hellip;]'>buying Kamagra generic india - buy cheap uk Sildenafil Citra</a></li></ul></div>     <!--End Footer Featured Posts-->
+    <!--Begin Footer RSS Links-->
+    		<div class="footerboxes">		<h3>Recent Articles</h3>		<ul>
+				<li><a href="http://www.mycplus.com/source-code/cplusplus-source-code/add-time-using-structures-in-c/" title="Add time using structures in C++">Add time using structures in C++</a></li>
+				<li><a href="http://www.mycplus.com/featured-articles/best-free-programming-courses-online/" title="Best free C and C++ programming courses online">Best free C and C++ programming courses online</a></li>
+				<li><a href="http://www.mycplus.com/computer-books/programming-books/test-driven-development-for-embedded-c/" title="Test Driven Development for Embedded C">Test Driven Development for Embedded C</a></li>
+				<li><a href="http://www.mycplus.com/computer-books/programming-books/150-programming-interview-questions-and-solutions/" title="Cracking the Coding Interview, Fourth Edition: 150 Programming Interview Questions and Solutions">Cracking the Coding Interview, Fourth Edition: 150 Programming Interview Questions and Solutions</a></li>
+				<li><a href="http://www.mycplus.com/computer-books/programming-books/iphone-and-ipad-apps-for-absolute-beginners-getting-started/" title="iPhone and iPad Apps for Absolute Beginners (Getting Started)">iPhone and iPad Apps for Absolute Beginners (Getting Started)</a></li>
+				</ul>
+		</div>    <!--End Footer RSS Links-->
+  </div>
+</div>
+<div id="FooterLinksBlock">
+	<div id="FooterLinksBlock1">
+      <ul class="FooterLinks">
+        <li><a href="http://www.mycplus.com/sitemap/">Sitemap</a></li>
+        <li><a href="http://www.mycplus.com/copyright/">Copyright</a></li>
+        <li><a href="http://www.mycplus.com/privacy/">Privacy</a></li>
+        <li><a href="http://www.mycplus.com/contact/">Contact</a></li>
+        <li class="NoB"><a href="http://saqib.mycplus.com/">Profile</a></li>
+<li><a href="http://www.mycplus.com/links/">Links</a></li>
+      </ul>
+      <ul class="FooterLinksA">
+        <li><a href="http://www.mycplus.com/feed/">RSS Feed</a> </li>
+        <li><a href="http://www.mycplus.com/comments/feed/">Comments Feed</a></li>
+		<li><a href="http://www.mycplus.com/forum/rss.php">Discussion Feed</a></li>
+      </ul>
+    </div>
+	</div>
+</div>
+</div>
+		<!-- Advertising Manager v3.4.19 (0.630 seconds.) -->
+<!--stats_footer_test--><script src="http://stats.wordpress.com/e-201235.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'4862201',v:'ext',post:'407'});
+var load_cmc = function(){linktracker_init(4862201,407,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script>
+
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="http://www.mycplus.com/mycplus/wp-content/plugins/syntaxhighlighter-plus/syntaxhighlighter/src/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-269953-1");
+pageTracker._trackPageview();
+</script>
+</body></html>
