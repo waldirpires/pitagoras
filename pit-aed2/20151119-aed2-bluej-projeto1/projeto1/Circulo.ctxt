@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=r
+comment0.target=Circulo(int)
+comment1.params=
+comment1.target=int\ getRaio()
+comment2.params=
+comment2.target=double\ calcularArea()
+comment3.params=
+comment3.target=java.lang.String\ getNome()
+numComments=4

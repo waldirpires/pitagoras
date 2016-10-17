@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Arvore()
+comment0.text=\r\n\ COnstrutor\ para\ objetos\ da\ classe\ Arvore\r\n
+comment1.params=
+comment1.target=int\ getAltura()
+comment1.text=\r\n\ Exemplo\ de\ m\u00E9todo\ -\ substitua\ este\ coment\u00E1rio\ pelo\ seu\ pr\u00F3prio\r\n\ \r\n\ @param\ \ y\ \ \ exemplo\ de\ um\ par\u00E2metro\ de\ m\u00E9todo\r\n\ @return\ \ \ \ \ a\ soma\ de\ x\ com\ y\ \r\n
+comment2.params=tam
+comment2.target=void\ setAltura(int)
+numComments=3

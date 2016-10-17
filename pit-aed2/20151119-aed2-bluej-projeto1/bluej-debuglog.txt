@@ -1,0 +1,13 @@
+BlueJ run started: Thu Nov 19 14:51:54 GMT-03:00 2015
+BlueJ version 3.1.6
+Java version 1.8.0_11
+Virtual machine: Java HotSpot(TM) 64-Bit Server VM 25.11-b03 (Oracle Corporation)
+Running on: Windows 7 6.1 (amd64)
+Java Home: C:\Program Files\Java\jdk1.8.0_11\jre
+----
+Detected language "portuguese" based on iso639-2 code "por"
+Attempt to create project with existing non-empty directory: C:\Users\professor\Documents
+Opening project: C:\Users\professor\bluej\projeto1
+1447955545135: Listening for JDWP connection on address: javadebug
+Connected to debug VM via dt_shmem transport...
+Communication with debug VM fully established.

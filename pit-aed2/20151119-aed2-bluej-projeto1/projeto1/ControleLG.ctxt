@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ liga()
+comment1.params=
+comment1.target=void\ desliga()
+comment2.params=canal
+comment2.target=void\ mudarCanal(int)
+comment3.params=volume
+comment3.target=void\ mudarVolume(int)
+comment4.params=
+comment4.target=void\ apertarTeclaMudo()
+numComments=5
