@@ -1,0 +1,14 @@
+
+Tsquid:S1197"8Move the array designator from the variable to the type.(íä¸üÿÿÿÿ
+Q
+squid:S106";Replace this usage of System.out or System.err by a logger.(“Õ÷
+Q
+squid:S106#";Replace this usage of System.out or System.err by a logger.(ûõÓ›
+Q
+squid:S106$";Replace this usage of System.out or System.err by a logger.(£ø–¿
+V
+squid:S106,";Replace this usage of System.out or System.err by a logger.(…˜¡¡ûÿÿÿÿ
+gsquid:S1132*"KMove the "close" string literal on the left side of this string comparison.(Â™¬…ùÿÿÿÿ
+Qsquid:S1118":Add a private constructor to hide the implicit public one.(­¾ È
+Ssquid:S1854"<Remove this useless assignment to local variable "sendData".(İë‹Ô
+ssquid:S00117""VRename this local variable name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ì¿÷óúÿÿÿÿ
